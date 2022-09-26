@@ -1,0 +1,23 @@
+.no-rows-container {
+  width: 80%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    margin: 0.5rem 0;
+    color: var(--primary);
+    text-align: center;
+    font-family: Ubuntu, Roboto, sans-serif;
+  }
+
+  h3 {
+    margin: 0.5rem 0;
+    color: var(--secondary-green);
+    text-align: center;
+    font-family: Ubuntu, Roboto, sans-serif;
+  }
+}

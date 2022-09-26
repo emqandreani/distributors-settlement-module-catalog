@@ -1,0 +1,60 @@
+import { GridColDef } from "@mui/x-data-grid";
+
+export const priceBookConceptColumns: GridColDef[] = [
+  {
+    field: "concept",
+    headerName: "ID",
+    headerAlign: "center",
+    align: "center",
+    flex: 1,
+    sortable: true,
+  },
+  {
+    field: "description",
+    headerName: "Descripción",
+    headerAlign: "center",
+    align: "center",
+    flex: 1,
+    sortable: true,
+  },
+  {
+    field: "amount",
+    headerName: "Prec. Uni.",
+    headerAlign: "center",
+    align: "center",
+    flex: 1,
+    sortable: true,
+  },
+  {
+    field: "originPriceBook",
+    headerName: "Libro",
+    headerAlign: "center",
+    align: "center",
+    flex: 1,
+    sortable: true,
+  },
+  {
+    field: "condition",
+    headerName: "Condición",
+    headerAlign: "center",
+    align: "center",
+    flex: 1,
+    sortable: true,
+  },
+  {
+    field: "createdBy",
+    headerName: "Agregado por",
+    headerAlign: "center",
+    align: "center",
+    flex: 1,
+    sortable: true,
+  },
+  {
+    field: "createdAt",
+    headerName: "Fecha",
+    headerAlign: "center",
+    align: "center",
+    flex: 1,
+    sortable: true,
+  },
+];

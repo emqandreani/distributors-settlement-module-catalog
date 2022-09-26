@@ -1,0 +1,28 @@
+.concept-accordion-wrapper {
+  width: 95%;
+  height: auto;
+  margin: 1rem auto !important;
+  padding: 0.5rem 0;
+  border-radius: 16px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 1rem rgb(0 0 0 / 0.1);
+  color: var(--gray-800);
+}
+
+.pricebook-concept-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 95%;
+  margin: 0 auto;
+
+  .pricebook-concept-title {
+    margin: 0;
+    font-size: 20px;
+    color: var(--gray-800);
+  }
+}
+
+.angle-down-icon {
+  color: var(--primary);
+}

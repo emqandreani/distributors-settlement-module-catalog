@@ -1,0 +1,19 @@
+.simulator-page-container {
+  margin: 3rem 0 2rem;
+  gap: 2rem;
+
+  .page-title {
+    margin: 0.5rem 3rem;
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--gray-800);
+  }
+
+  .page-divider {
+    width: calc(100% - 6rem);
+    height: 1px;
+    margin: 0 3rem;
+    background-color: var(--gray-300);
+    border: none;
+  }
+}

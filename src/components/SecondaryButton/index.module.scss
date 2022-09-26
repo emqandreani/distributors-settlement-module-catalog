@@ -1,0 +1,47 @@
+.secondary-button-wrapper {
+  width: 140px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  height: 2.5rem;
+  padding: 0 1.5em;
+  gap: 0.5rem;
+  border: none;
+  color: var(--gray-800);
+  background-color: #fff;
+  border-radius: 25px;
+  box-shadow: 0 3px 6px rgb(0 0 0 / 6%);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--shadow-gray);
+    font-weight: bold;
+    transition: all 150ms ease-in-out;
+  }
+
+  .__link {
+    text-decoration: none;
+    color: inherit;
+    display: inherit;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .__text {
+    margin: 0;
+    font-family: Ubuntu, Roboto, sans-serif;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.57;
+  }
+
+  .__icon {
+    display: inherit;
+    margin-right: 8px;
+    margin-left: -4px;
+  }
+}

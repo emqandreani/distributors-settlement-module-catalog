@@ -1,0 +1,23 @@
+.distributor-table-container {
+  width: 50%;
+  height: 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 16px;
+  box-shadow: 0 0 1rem rgb(0 0 0 / 0.1);
+
+  .data-grid {
+    width: 100%;
+    color: var(--gray-800);
+    border: none;
+
+    .table-row {
+      &:hover {
+        background-color: var(--gray-200);
+      }
+    }
+  }
+}

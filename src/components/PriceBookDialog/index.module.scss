@@ -1,0 +1,10 @@
+.dialog-wrapper {
+  padding: 1.5rem !important;
+  height: auto;
+  color: var(--gray-800) !important;
+
+  .__title {
+    font-size: 20px;
+    color: var(--primary);
+  }
+}

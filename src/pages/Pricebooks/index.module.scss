@@ -1,0 +1,45 @@
+.catalogs-page-container {
+  .page-title {
+    margin: 0.5rem 3rem;
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--gray-800);
+  }
+
+  .page-divider {
+    width: calc(100% - 6rem);
+    height: 1px;
+    margin: 0 3rem;
+    background-color: var(--gray-300);
+    border: none;
+  }
+
+  .data-table-container {
+    width: 94%;
+    height: auto;
+    margin: 1rem auto;
+    padding: 0.5rem;
+    border-radius: 16px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 1rem rgb(0 0 0 / 0.1);
+    color: var(--gray-800);
+  }
+}
+
+.pricebook-concept-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 95%;
+  margin: 0 auto;
+
+  .pricebook-concept-title {
+    margin: 0;
+    font-size: 20px;
+    color: var(--gray-800);
+  }
+}
+
+.angle-down-icon {
+  color: var(--primary);
+}

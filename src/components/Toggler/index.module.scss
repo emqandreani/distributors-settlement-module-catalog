@@ -1,0 +1,45 @@
+.toggler-container {
+  display: inline-flex;
+  position: absolute;
+  top: 20px;
+  align-items: center;
+  gap: 1rem;
+}
+
+.toggler-wrapper {
+  width: 3.5rem;
+  height: 30px;
+  border-radius: 2rem;
+}
+
+.toggler-input {
+  position: absolute;
+  opacity: 0;
+  z-index: 99;
+}
+
+.toggler-label {
+  height: 30px;
+  position: relative;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.toggler-ball {
+  width: 1.75rem;
+  height: 1.75rem;
+  position: absolute;
+  left: 0;
+  background-color: white;
+  border: none;
+  border-radius: 50%;
+  transform: translateX(0);
+  transition: transform 0.2s linear;
+}
+
+.toggler-input:checked + label div {
+  transform: translateX(1.75rem);
+}

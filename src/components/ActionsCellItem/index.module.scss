@@ -1,0 +1,14 @@
+.delete-icon {
+  cursor: pointer;
+  background-color: white;
+  padding: 0.65rem;
+  border-radius: 50%;
+  color: var(--primary);
+  transition: all ease-in-out 150ms;
+  box-shadow: var(--bs-primary);
+
+  &:hover {
+    background-color: var(--primary);
+    color: white;
+  }
+}

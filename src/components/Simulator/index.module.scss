@@ -1,0 +1,67 @@
+.simulator-container {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: column wrap;
+  gap: 2rem;
+  align-items: center;
+  position: relative;
+
+  .buttons-wrapper {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    gap: 1rem;
+
+    .link-button {
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .simulator-button {
+      font-size: 1rem;
+      height: 2.5rem;
+      padding: 0 1.5em;
+      background-color: var(--primary);
+      color: #fff;
+      border-radius: 25px;
+      box-shadow: 0 3px 6px rgb(0 0 0 / 6%);
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      box-sizing: border-box;
+      outline: 0;
+      margin: 0;
+      cursor: pointer;
+      appearance: none;
+      text-decoration: none;
+      line-height: 1.75;
+      min-width: 64px;
+
+      &:hover {
+        background-color: var(--secondary-red-dark);
+        box-shadow: 0 3px 6px #00000038;
+        transition: all 150ms ease-in;
+      }
+    }
+  }
+
+  .inline-flex {
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .panels-wrapper {
+    display: flex;
+    width: 100%;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}

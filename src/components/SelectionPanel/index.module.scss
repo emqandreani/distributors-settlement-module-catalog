@@ -1,0 +1,32 @@
+.selection-panel-container {
+  display: flex;
+  flex-flow: column wrap;
+  width: 45%;
+  padding: 1rem;
+  box-shadow: 0 3px 6px #00000029;
+  border-radius: 1rem;
+  background-color: white;
+
+  .selection-header-wrapper {
+    display: flex;
+    flex-flow: row;
+    gap: 1rem;
+    align-items: center;
+
+    .header-wrapper-icon {
+      width: 90px;
+    }
+
+    .header-wrapper-text {
+      color: var(--primary);
+      font-weight: bold;
+    }
+  }
+
+  .select-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem 1rem;
+    margin-top: 2rem;
+  }
+}

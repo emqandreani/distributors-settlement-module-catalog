@@ -1,0 +1,23 @@
+.concept-dialog-container {
+  width: 60%;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0.5rem;
+  border-radius: 16px;
+  box-shadow: 0 0 1rem rgb(0 0 0 / 0.1);
+
+  .data-grid {
+    width: 100%;
+    color: var(--gray-800);
+    border: none;
+
+    .table-row {
+      &:hover {
+        background-color: var(--gray-200);
+      }
+    }
+  }
+}

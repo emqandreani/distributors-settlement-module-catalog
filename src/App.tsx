@@ -1,33 +1,28 @@
-import React from "react";
+import React, { Suspense } from "react";
+import Router from "router";
+import { SuspenseLoader } from "components/SuspenseLoader";
+import { AnyAction, Store } from "@reduxjs/toolkit";
+import { Provider as LocalProvider, Provider } from "react-redux";
+import { ErrorBoundary } from "@architecture-it/stylesystem";
 
-import { AccountInfo } from "./@types/global";
-import { AccountContext } from "./context/Account";
-import Routes from "./routes";
+import { ModuleContext, store as moduleStore } from "./app/store";
 
-interface IAppProps {
-  /**
-   * Account from MSAL
-   */
-  account?: AccountInfo;
+interface AppProps {
+  store: Store<any, AnyAction>;
 }
 
-const DEFAULT_ACCOUNT: AccountInfo = {
-  name: "Wick John",
-  username: "thekiller",
-  environment: "",
-  homeAccountId: "",
-  tenantId: "",
-  nativeAccountId: "",
-  localAccountId: "",
-  idTokenClaims: {},
+const App = ({ store }: AppProps) => {
+  return (
+    <Provider store={store}>
+      <LocalProvider context={ModuleContext} store={moduleStore}>
+        <ErrorBoundary>
+          <Suspense fallback={<SuspenseLoader />}>
+            <Router />
+          </Suspense>
+        </ErrorBoundary>
+      </LocalProvider>
+    </Provider>
+  );
 };
-
-const App = ({ account = DEFAULT_ACCOUNT }: IAppProps) => (
-  <AccountContext.Provider value={account}>
-    <React.Suspense fallback={"...loading"}>
-      <Routes />
-    </React.Suspense>
-  </AccountContext.Provider>
-);
 
 export default App;

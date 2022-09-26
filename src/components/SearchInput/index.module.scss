@@ -1,0 +1,19 @@
+.pricebook-filter-search {
+  width: 204px;
+  margin-left: auto;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+
+  .filter-search-button {
+    font-size: 22px;
+    position: absolute;
+    top: 17px;
+    right: 5px;
+    color: var(--gray-800);
+    cursor: pointer;
+    background: transparent;
+    border: none;
+  }
+}

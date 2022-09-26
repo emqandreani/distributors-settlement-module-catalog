@@ -1,0 +1,12 @@
+.suspense-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .suspense-loader {
+    width: 65px !important;
+    height: 65px !important;
+  }
+}

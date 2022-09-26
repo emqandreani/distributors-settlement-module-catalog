@@ -1,0 +1,32 @@
+.application-level-wrapper {
+  width: 100%;
+  padding: 1rem 0 0;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+
+  .__select {
+    max-width: 240px;
+    height: 45px;
+    border-radius: 16px;
+    background-color: white;
+    border: 1px solid var(--gray-500);
+
+    legend {
+      padding: 0.5rem 0;
+      overflow: visible;
+      height: 16px;
+
+      span {
+        visibility: 1;
+        background-color: white;
+        font-size: 14px;
+        opacity: 1;
+        z-index: 10;
+      }
+    }
+  }
+}
