@@ -2,7 +2,7 @@ const { dependencies } = require("./package.json");
 
 module.exports = {
   name: "module",
-  library: { type: "var", name: "remote" },
+  library: { type: "var", name: "catalog" },
   exposes: {
     "./App": "./src/App",
   },
