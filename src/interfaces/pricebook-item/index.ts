@@ -1,3 +1,5 @@
+import { IBaseSlice } from "interfaces/base-slice";
+
 export interface IPricebookItemPostDTO {
   concept: number;
   description: string;
@@ -32,4 +34,8 @@ export interface IPriceBookItem {
   priceBookItemType: IPriceBookItemType;
   ownerPriceBook: string;
   creatorPriceBook: string;
+}
+
+export interface InitialStateProps extends IBaseSlice {
+  response: string | null;
 }

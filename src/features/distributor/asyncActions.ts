@@ -2,10 +2,9 @@ import { MESSAGE_STATUS } from "constants/status";
 
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { displayAlert } from "features/alert/slice";
-import { IDistributor } from "interfaces/Distributor";
+import { IAssignDistributorDto, IDistributor } from "interfaces/Distributor";
 import Distributor from "services/distributor";
 import { isAxiosError } from "test-utils/axiosError";
-import { IAssignDistributorDto } from "interfaces/DTO/AssignDistributorDto";
 
 export const fetchDistributor = createAsyncThunk<IDistributor[], void>(
   "distributor/get",
