@@ -2,9 +2,11 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import React from "react";
 import { createDispatchHook, createSelectorHook, ReactReduxContextValue } from "react-redux";
 import distributor from "features/distributor";
+import pricebook from "features/distributor";
 
 export const reducers = combineReducers({
   distributor,
+  pricebook,
 });
 
 export const store = configureStore({

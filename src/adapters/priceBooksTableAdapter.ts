@@ -1,21 +1,6 @@
 import { capitalize } from "@mui/material";
 import { differenceInDays } from "date-fns";
-import { IPriceBook } from "interfaces/PriceBook";
-export interface IPriceBooksTable {
-  id: string;
-  name: string;
-  state: string[];
-  affectedDistributors: string;
-  lastMonthSettlement: string;
-  currentMonthSettlement: string;
-  subPriceBooks: number;
-  startDate?: string;
-  endDate?: string;
-  remainingDays?: number;
-  createdBy: string;
-  createdAt: string;
-  actions: string;
-}
+import { IPriceBook } from "interfaces/pricebook";
 
 export const priceBooksTableAdapter = (pricebooks: IPriceBook[]) => {
   return pricebooks.map(

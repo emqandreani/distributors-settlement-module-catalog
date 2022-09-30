@@ -1,22 +1,5 @@
-import { IPriceBook } from "interfaces/PriceBook";
+import { IPriceBook } from "interfaces/pricebook";
 import { IPriceBookItem } from "interfaces/PriceBookItem";
-
-export interface IPriceBookConceptsTable {
-  priceBookId: string;
-  id: string;
-  concept: number;
-  description: string;
-  amount: string;
-  createdAt: string;
-  createdBy: string;
-  actions: string;
-  events: number;
-  condition: string;
-  ownerPriceBookId: string;
-  creatorPriceBookId: string;
-  priceBookItemTypeId: string;
-  priceBookItemTypeName: string;
-}
 
 export const priceBookConceptsTableAdapter = (
   priceBook: IPriceBook,

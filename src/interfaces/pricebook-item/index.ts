@@ -1,4 +1,17 @@
-import { IPriceBookItemType } from "./PriceBookItemType";
+export interface IPricebookItemPostDTO {
+  concept: number;
+  description: string;
+  amount: number;
+  condition: boolean;
+  ownerPriceBookId: string;
+  creatorPriceBookId: string;
+  events: number;
+  priceBookItemTypeId: string;
+}
+export interface IPriceBookItemType {
+  id: string;
+  description: string;
+}
 
 export interface IPriceBookItem {
   id: string;
