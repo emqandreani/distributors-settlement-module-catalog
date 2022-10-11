@@ -1,4 +1,4 @@
-import { IPriceBook } from "interfaces/PriceBook";
+import { IPriceBook } from "interfaces/pricebook";
 
 export default function mapPriceBooks(priceBook: IPriceBook) {
   const arr: IPriceBook[] = [];

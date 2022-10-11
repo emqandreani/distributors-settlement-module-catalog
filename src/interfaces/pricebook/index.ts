@@ -1,6 +1,6 @@
 import { IApplicationLevel } from "interfaces/ApplicationLevel";
 import { IBaseSlice } from "interfaces/base-slice";
-import { IPriceBookItem } from "interfaces/PriceBookItem";
+import { IPriceBookItem } from "interfaces/pricebook-item";
 import { IPriceBookState } from "interfaces/PriceBookState";
 import { IResquest } from "interfaces/Request";
 

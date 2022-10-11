@@ -9,6 +9,15 @@ import {
   IUpdatePriceBookDto,
 } from "interfaces/pricebook";
 import { RootState } from "app/store";
+import {
+  fullfiledSimpleCallbackCase,
+  pendingSimpleCallbackCase,
+  rejectCallbackCase,
+} from "test-utils/reduxCallbacks";
+import mapPriceBooks from "test-utils/mapPriceBooks";
+import { filterPbByState } from "test-utils/filterPbByState";
+
+import { createPricebook, fetchPriceBooks, modifyPricebook } from "./asyncActions";
 
 const initialState: InitialStateProps = {
   data: {},
@@ -197,6 +206,55 @@ export const pricebookSlice = createSlice({
     //       break;
     //   }
     // },
+  },
+  extraReducers(builder) {
+    builder.addCase(fetchPriceBooks.pending, (state, action) => {
+      pendingSimpleCallbackCase(state);
+      state.getPriceBooksRequest = action.meta.requestStatus;
+    });
+    builder.addCase(fetchPriceBooks.fulfilled, (state, action) => {
+      fullfiledSimpleCallbackCase(state);
+      state.data = action.payload;
+      state.getPriceBooksRequest = action.meta.requestStatus;
+      state.subPriceBooks = action.payload.priceBookChildren;
+      state.mappedPriceBooks = mapPriceBooks(action.payload);
+      state.activePriceBooks = filterPbByState(action.payload.priceBookChildren, "active");
+      state.draftPriceBooks = filterPbByState(action.payload.priceBookChildren, "draft");
+      state.consolidatedPriceBooks = filterPbByState(
+        action.payload.priceBookChildren,
+        "consolidated"
+      );
+      state.unConsolidatedPriceBooks = filterPbByState(
+        action.payload.priceBookChildren,
+        "unconsolidated"
+      );
+      state.expiredPriceBooks = filterPbByState(action.payload.priceBookChildren, "expired");
+      state.basePriceBookForAddition = action.payload;
+    });
+    builder.addCase(fetchPriceBooks.rejected, (state, action) => {
+      rejectCallbackCase(state, action);
+      state.getPriceBooksRequest = action.meta.requestStatus;
+    });
+    builder.addCase(createPricebook.pending, (state, action) => {
+      state.postPriceBookRequest = Object.create(null);
+      state.postPriceBookRequest!.status = action.meta.requestStatus;
+    });
+    builder.addCase(createPricebook.fulfilled, (state, { payload }) => {
+      state.postPriceBookRequest = { ...payload };
+    });
+    builder.addCase(createPricebook.rejected, (state, action) => {
+      state.postPriceBookRequest!.status = action.meta.requestStatus;
+    });
+    builder.addCase(modifyPricebook.pending, (state, action) => {
+      state.putPriceBookRequest = Object.create(null);
+      state.putPriceBookRequest!.status = action.meta.requestStatus;
+    });
+    builder.addCase(modifyPricebook.fulfilled, (state, { payload }) => {
+      state.putPriceBookRequest = { ...payload };
+    });
+    builder.addCase(modifyPricebook.rejected, (state, action) => {
+      state.putPriceBookRequest!.status = action.meta.requestStatus;
+    });
   },
 });
 
