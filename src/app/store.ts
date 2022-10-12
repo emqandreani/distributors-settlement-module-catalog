@@ -4,11 +4,13 @@ import { createDispatchHook, createSelectorHook, ReactReduxContextValue } from "
 import distributor from "features/distributor";
 import pricebook from "features/distributor";
 import pricebookItem from "features/pricebook-item";
+import layout from "features/layout";
 
 export const reducers = combineReducers({
   distributor,
   pricebook,
   pricebookItem,
+  layout,
 });
 
 export const store = configureStore({
