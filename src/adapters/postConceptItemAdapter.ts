@@ -1,6 +1,4 @@
-import { IPriceBook } from "interfaces/PriceBook";
-
-import { IPriceBookConceptsTable } from "./priceBookConceptsTableAdapter";
+import { IPriceBook, IPriceBookConceptsTable } from "interfaces/pricebook";
 
 export const postConceptItemAdapter = (
   conceptItem: IPriceBookConceptsTable,

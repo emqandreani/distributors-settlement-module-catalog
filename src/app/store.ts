@@ -2,7 +2,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import React from "react";
 import { createDispatchHook, createSelectorHook, ReactReduxContextValue } from "react-redux";
 import distributor from "features/distributor";
-import pricebook from "features/distributor";
+import pricebook from "features/pricebook";
 import pricebookItem from "features/pricebook-item";
 import layout from "features/layout";
 

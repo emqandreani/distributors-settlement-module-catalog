@@ -1,7 +1,7 @@
 import { Select } from "@architecture-it/stylesystem";
 import { MenuItem } from "@mui/material";
-import { selectorPriceBooks } from "app/slices/priceBooks";
-import useApplicationLevelFilters from "hooks/useApplicationLevelFilters";
+import useApplicationLevelFilters from "components/ApplicationLevelFilters/hooks";
+import { selectorPricebook } from "features/pricebook/slice";
 import React from "react";
 import { useSelector } from "react-redux";
 
@@ -27,7 +27,7 @@ export const ApplicationLevelFilters: React.FC<ApplicationLevelFiltersProps> = (
     selectedRegionalPriceBookForAddition,
     selectedBranchPriceBookForAddition,
     selectedVehiclePriceBookForAddition,
-  } = useSelector(selectorPriceBooks);
+  } = useSelector(selectorPricebook);
 
   return (
     <div className={styles["application-level-wrapper"]}>

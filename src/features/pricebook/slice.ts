@@ -260,6 +260,6 @@ export const pricebookSlice = createSlice({
 
 export const selectorPricebook = (state: RootState) => state.pricebook;
 
-export const { ...actions } = pricebookSlice.actions;
+export const { removeConceptItem, addConceptItems, addConceptItemsNewPriceBook } = pricebookSlice.actions;
 
 export const reducer = pricebookSlice.reducer;

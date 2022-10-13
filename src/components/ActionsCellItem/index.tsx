@@ -1,7 +1,7 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faTrash } from "@fortawesome/pro-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { removeConceptItem } from "app/slices/priceBooks";
+import { removeConceptItem } from "features/pricebook";
 import React from "react";
 import { useDispatch } from "react-redux";
 

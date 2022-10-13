@@ -2,12 +2,12 @@ import { Button } from "@architecture-it/stylesystem";
 import { faArrowLeft, faPlus } from "@fortawesome/pro-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
-import { toggleConceptDialog } from "app/slices/layout";
-import { addConceptItems } from "app/slices/priceBooks";
 import { PrimaryButton } from "components/PrimaryButton";
 import { ConceptContainer } from "containers/ConceptContainer";
-import useDispatchPriceBookItem from "hooks/useDispatchPriceBookItem";
+import { toggleConceptDialog } from "features/layout";
+import { addConceptItems } from "features/pricebook";
 import React from "react";
+import useDispatchPriceBookItem from "./hooks";
 
 import styles from "./index.module.scss";
 
