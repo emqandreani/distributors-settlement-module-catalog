@@ -1,4 +1,4 @@
-import { searchConceptFlag, selectConcept } from "app/slices/priceBooks";
+import { searchConceptFlag, selectConcept } from "features/pricebook";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 

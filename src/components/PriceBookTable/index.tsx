@@ -5,9 +5,9 @@ import {
   GridColDef,
   GridRowParams,
 } from "@mui/x-data-grid";
-import { IPriceBooksTable } from "adapters/priceBooksTableAdapter";
 import { NoRowsPriceBook } from "components/NoRows";
 import { StateCellRow } from "components/StateCellRow";
+import { IPriceBooksTable } from "interfaces/pricebook";
 import React, { useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 

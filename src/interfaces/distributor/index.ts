@@ -12,6 +12,11 @@ export interface IDistributor {
   priceBookName: null | string;
 }
 export interface IAssignDistributorDto {
+  id: string;
+  priceBookId: string;
+}
+
+export interface IPostResponse {
   status: string;
   id: string;
   priceBookId: string;
@@ -19,6 +24,6 @@ export interface IAssignDistributorDto {
 
 export interface InitialStateProps extends IBaseSlice {
   data: IDistributor[];
-  assignedDistributors: IDistributor[] | undefined;
-  postResponse: IAssignDistributorDto | null;
+  assignedDistributors: IDistributor[] | null;
+  postResponse: IPostResponse | null;
 }

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "app/store";
-import { IDistributor, InitialStateProps } from "interfaces/Distributor";
+import { IDistributor, InitialStateProps } from "interfaces/distributor";
 import {
   fullfiledSimpleCallbackCase,
   pendingSimpleCallbackCase,
@@ -13,7 +13,7 @@ const initialState: InitialStateProps = {
   data: [],
   isLoading: false,
   error: null,
-  assignedDistributors: [],
+  assignedDistributors: null,
   postResponse: null,
 };
 

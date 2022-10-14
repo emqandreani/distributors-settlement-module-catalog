@@ -2,7 +2,7 @@ import { MESSAGE_STATUS } from "constants/status";
 
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { displayAlert } from "features/alert/slice";
-import { IAssignDistributorDto, IDistributor } from "interfaces/Distributor";
+import { IAssignDistributorDto, IDistributor } from "interfaces/distributor";
 import Distributor from "services/distributor";
 import { isAxiosError } from "test-utils/axiosError";
 

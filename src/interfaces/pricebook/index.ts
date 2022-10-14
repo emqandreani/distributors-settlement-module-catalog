@@ -69,6 +69,11 @@ export interface IPriceBookConceptsTable {
   priceBookItemTypeName: string;
 }
 
+export interface IConceptFlag {
+  type: string;
+  flag: string;
+}
+
 export interface InitialStateProps extends IBaseSlice {
   data: IPriceBook | {};
   addedConcepts: IPriceBookConceptsTable[] | [];
@@ -92,7 +97,7 @@ export interface InitialStateProps extends IBaseSlice {
   newPriceBookConcepts: IPriceBookConceptsTable[] | [];
   stateFilterFlag: string | null;
   selectedConcept: string | null;
-  // filteredConceptFlag: IConceptFlag | null;
+  filteredConceptFlag: IConceptFlag | null;
   baseSimulatedPriceBook: string | null;
   newSimulatedPriceBook: string | null;
   getPriceBooksRequest: string | null;

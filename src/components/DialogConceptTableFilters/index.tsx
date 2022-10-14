@@ -1,18 +1,19 @@
 import { Checkbox, FormLabel } from "@mui/material";
-import { searchConceptFlag, selectorPriceBooks } from "app/slices/priceBooks";
+import { useLocalSelector } from "app/store";
 import { ApplicationLevelFilters } from "components/ApplicationLevelFilters";
 import { SearchInput } from "components/SearchInput";
+import { searchConceptFlag, selectorPricebook } from "features/pricebook/slice";
 import useSearchInput from "hooks/useSearchInput";
-import useSelectConceptFilter from "hooks/useSelectConceptFilter";
 import React from "react";
 import { useSelector } from "react-redux";
+import useSelectConceptFilter from "./hooks";
 
 import styles from "./index.module.scss";
 
 export interface DialogConceptTableFiltersProps {}
 
 export const DialogConceptTableFilters: React.FC<DialogConceptTableFiltersProps> = () => {
-  const { selectedConcept } = useSelector(selectorPriceBooks);
+  const { selectedConcept } = useLocalSelector(selectorPricebook);
   const { selectValue, handleSelectValue } = useSelectConceptFilter();
   const { value, handleSubmit, handleSearch } = useSearchInput({
     submitAction: searchConceptFlag,

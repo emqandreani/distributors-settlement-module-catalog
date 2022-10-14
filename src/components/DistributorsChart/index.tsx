@@ -1,20 +1,21 @@
 import { STATUS } from "constants/status";
 
 import { Button } from "@architecture-it/stylesystem";
-import { selectorDistributor } from "app/slices/distributor";
 import { ApplicationLevelFilters } from "components/ApplicationLevelFilters";
 import { DistributorsChartList } from "components/DistributorsChartList";
-import useAssignPriceBook from "hooks/useAssignPriceBook";
 import React from "react";
 import { useSelector } from "react-redux";
 
 import styles from "./index.module.scss";
+import { selectorDistributor } from "features/distributor/slice";
+import { useLocalSelector } from "app/store";
+import useAssignPriceBook from "./hooks";
 
 export interface DistributorsChartProps {}
 
 export const DistributorsChart: React.FC<DistributorsChartProps> = () => {
   const { handleAssignPriceBook } = useAssignPriceBook();
-  const { assignDistributorsRequest } = useSelector(selectorDistributor);
+  const { postResponse } = useLocalSelector(selectorDistributor);
 
   return (
     <div className={styles["distributors-chart-container"]}>
@@ -26,7 +27,7 @@ export const DistributorsChart: React.FC<DistributorsChartProps> = () => {
         </p>
         <Button
           color="primary"
-          disabled={assignDistributorsRequest?.status === STATUS.PENDING}
+          disabled={postResponse?.status === STATUS.PENDING}
           text="Asignar"
           type="button"
           variant="contained"

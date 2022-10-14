@@ -2,6 +2,7 @@ import { PRICEBOOKS_STATES } from "constants/pricebookStates";
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
+  IConceptFlag,
   InitialStateProps,
   IPostPriceBookDto,
   IPriceBook,
@@ -42,6 +43,7 @@ const initialState: InitialStateProps = {
   savedEditedPriceBook: false,
   addedConcepts: [],
   newPriceBookConcepts: [],
+  filteredConceptFlag: null,
   stateFilterFlag: null,
   selectedConcept: "service",
   baseSimulatedPriceBook: null,
@@ -98,9 +100,9 @@ export const pricebookSlice = createSlice({
     selectStateFlag: (state: InitialStateProps, action: PayloadAction<string | null>) => {
       state.stateFilterFlag = action.payload;
     },
-    // searchConceptFlag: (state: InitialStateProps, action: PayloadAction<IConceptFlag | null>) => {
-    //   state.filteredConceptFlag = action.payload;
-    // },
+    searchConceptFlag: (state: InitialStateProps, action: PayloadAction<IConceptFlag | null>) => {
+      state.filteredConceptFlag = action.payload;
+    },
     filterPriceBookByString: (state: InitialStateProps, action: PayloadAction<string | null>) => {
       if (action.payload) {
         state.filteredPriceBooks = state.subPriceBooks.filter((p: IPriceBook) => {
@@ -260,6 +262,6 @@ export const pricebookSlice = createSlice({
 
 export const selectorPricebook = (state: RootState) => state.pricebook;
 
-export const { removeConceptItem, addConceptItems, addConceptItemsNewPriceBook } = pricebookSlice.actions;
+export const { searchConceptFlag, selectConcept, removeConceptItem, addConceptItems, addConceptItemsNewPriceBook, selectBaseSimulatedPriceBook, selectRegionalPriceBookForAddition, selectBranchPriceBookForAddition, selectDistributorPriceBookForAddition, selectVehiclePriceBookForAddition } = pricebookSlice.actions;
 
 export const reducer = pricebookSlice.reducer;

@@ -1,18 +1,21 @@
 import { assignPriceBookAdapter } from "adapters/assignPriceBookAdapter";
-import { assignDistributors, selectorDistributor } from "app/slices/distributor";
-import { selectorPriceBooks } from "app/slices/priceBooks";
+import { useLocalDispatch, useLocalSelector } from "app/store";
+import { assignDistributors } from "features/distributor/asyncActions";
+import { selectorDistributor } from "features/distributor/slice";
+import { selectorPricebook } from "features/pricebook/slice";
+
+
 import { useCallback, useMemo } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 const useAssignPriceBook = () => {
-  const { assignedDistributors } = useSelector(selectorDistributor);
+  const { assignedDistributors } = useLocalSelector(selectorDistributor);
   const {
     selectedBranchPriceBookForAddition,
     selectedRegionalPriceBookForAddition,
     selectedVehiclePriceBookForAddition,
-  } = useSelector(selectorPriceBooks);
+  } = useLocalSelector(selectorPricebook);
 
-  const dispatch = useDispatch();
+  const dispatch = useLocalDispatch();
 
   const selectedPbId = useMemo(() => {
     return selectedVehiclePriceBookForAddition?.id
@@ -29,12 +32,14 @@ const useAssignPriceBook = () => {
   ]);
 
   const handleAssignPriceBook = useCallback(() => {
-    if (assignedDistributors.length > 1) {
+    if (assignedDistributors && assignedDistributors?.length > 1) {
       assignedDistributors.map((distributor) =>
         dispatch(assignDistributors(assignPriceBookAdapter(distributor, selectedPbId)))
       );
-    } else {
+    } else if (assignedDistributors) {
       dispatch(assignDistributors(assignPriceBookAdapter(assignedDistributors[0], selectedPbId)));
+    } else {
+        return
     }
   }, [assignedDistributors, dispatch, selectedPbId]);
 

@@ -1,14 +1,9 @@
 import { SelectChangeEvent } from "@mui/material";
-import {
-  selectBranchPriceBookForAddition,
-  selectDistributorPriceBookForAddition,
-  selectorPriceBooks,
-  selectRegionalPriceBookForAddition,
-  selectVehiclePriceBookForAddition,
-} from "app/slices/priceBooks";
-import { IPriceBook } from "interfaces/PriceBook";
+import { useLocalDispatch, useLocalSelector } from "app/store";
+import { selectBranchPriceBookForAddition, selectDistributorPriceBookForAddition, selectorPricebook, selectRegionalPriceBookForAddition, selectVehiclePriceBookForAddition } from "features/pricebook/slice";
+import { IPriceBook } from "interfaces/pricebook";
+
 import { useCallback, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 const useApplicationLevelFilters = () => {
   const [selectedPbName, setSelectedPbName] = useState<string | null>("Master"); // Needed in dialog header
@@ -23,9 +18,9 @@ const useApplicationLevelFilters = () => {
     selectedRegionalPriceBookForAddition,
     selectedBranchPriceBookForAddition,
     selectedVehiclePriceBookForAddition,
-  } = useSelector(selectorPriceBooks);
+  } = useLocalSelector(selectorPricebook);
 
-  const dispatch = useDispatch();
+  const dispatch = useLocalDispatch();
 
   const handleRegionalValue = useCallback((event: SelectChangeEvent<unknown>) => {
     event.preventDefault();
