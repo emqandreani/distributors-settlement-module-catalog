@@ -1,11 +1,11 @@
 import { faArrowLeft, faSave } from "@fortawesome/pro-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { selectorPriceBooks } from "app/slices/priceBooks";
 import { SecondaryButton } from "components/SecondaryButton";
 import { SelectionPanel } from "components/SelectionPanel";
 import { SimulatorPanel } from "components/SimulatorPanel";
 import { Toggler } from "components/Toggler";
-import { IPriceBook } from "interfaces/PriceBook";
+import { selectorPricebook } from "features/pricebook/slice";
+import { IPriceBook } from "interfaces/pricebook";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
@@ -15,7 +15,7 @@ export interface SimulatorProps {}
 
 export const Simulator: React.FC<SimulatorProps> = () => {
   const [isSelected, setIsSelected] = useState<boolean>(false);
-  const { priceBook } = useSelector(selectorPriceBooks);
+  const { data } = useSelector(selectorPricebook);
 
   const handleSelection = () => {
     setIsSelected(true);
@@ -42,10 +42,10 @@ export const Simulator: React.FC<SimulatorProps> = () => {
             <SelectionPanel headerText="Seleccione libro de precio a comparar" type="new" />
           </>
         )}
-        {isSelected && priceBook && (
+        {isSelected && data && (
           <>
-            <SimulatorPanel priceBook={priceBook as IPriceBook} type="base" />
-            <SimulatorPanel priceBook={priceBook as IPriceBook} type="new" />
+            <SimulatorPanel priceBook={data as IPriceBook} type="base" />
+            <SimulatorPanel priceBook={data as IPriceBook} type="new" />
           </>
         )}
       </div>

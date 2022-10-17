@@ -1,16 +1,17 @@
 import { GridSelectionModel } from "@mui/x-data-grid";
-import { IPriceBookConceptsTable } from "adapters/priceBookConceptsTableAdapter";
-import { addConceptItems, selectorPriceBooks } from "app/slices/priceBooks";
+import { useLocalDispatch, useLocalSelector } from "app/store";
+import { addConceptItems, selectorPricebook } from "features/pricebook/slice";
+import { IPriceBookConceptsTable } from "interfaces/pricebook";
+
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 const useConceptDialogTable = (rows: IPriceBookConceptsTable[]) => {
   const [addedServices, setAddedServices] = useState<IPriceBookConceptsTable[]>([]);
   const [addedDistribution, setAddedDistribution] = useState<IPriceBookConceptsTable[]>([]);
 
-  const { selectedConcept } = useSelector(selectorPriceBooks);
+  const { selectedConcept } = useLocalSelector(selectorPricebook);
 
-  const dispatch = useDispatch();
+  const dispatch = useLocalDispatch();
 
   const handleSelection = (model: GridSelectionModel) => {
     const selectedRows = rows.filter((row) => model.indexOf(row.id) >= 0);

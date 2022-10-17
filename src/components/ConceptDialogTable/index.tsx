@@ -1,9 +1,9 @@
 import { DataGrid, esES, GridColDef } from "@mui/x-data-grid";
 import React from "react";
-import { IPriceBookConceptsTable } from "adapters/priceBookConceptsTableAdapter";
-import useConceptDialogTable from "hooks/useConceptDialogTable";
 
 import styles from "./index.module.scss";
+import { IPriceBookConceptsTable } from "interfaces/pricebook";
+import useConceptDialogTable from "./hooks";
 
 export interface ConceptDialogTableProps {
   columns: GridColDef[];

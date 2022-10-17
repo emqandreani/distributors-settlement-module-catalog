@@ -3,15 +3,18 @@ import { PANEL_TYPE } from "constants/simulatorPanels";
 
 import { priceBookHeaderAdapater } from "adapters/priceBookHeaderAdapter";
 import { PriceBookConcept } from "components/PriceBookConcept";
-import { IPriceBook } from "interfaces/PriceBook";
+
 import React from "react";
 import { useSelector } from "react-redux";
-import { selectorLayout } from "app/slices/layout";
+
 import { Input } from "@architecture-it/stylesystem";
-import { IPriceBookItem } from "interfaces/PriceBookItem";
+
 import { priceBookConceptsTableAdapter } from "adapters/priceBookConceptsTableAdapter";
 
 import styles from "./index.module.scss";
+import { IPriceBook } from "interfaces/pricebook";
+import { selectorLayout } from "features/layout/slice";
+import { IPriceBookItem } from "interfaces/pricebook-item";
 
 export interface SimulatorPanelProps {
   priceBook: IPriceBook;

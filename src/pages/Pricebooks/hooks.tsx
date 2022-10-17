@@ -1,5 +1,6 @@
-import { selectorPriceBooks, selectPriceBook, selectStateFlag } from "app/slices/priceBooks";
-import { IPriceBook } from "interfaces/PriceBook";
+
+import { selectorPricebook, selectPriceBook, selectStateFlag } from "features/pricebook/slice";
+import { IPriceBook } from "interfaces/pricebook";
 import { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
@@ -9,7 +10,7 @@ const useSelectPriceBook = () => {
 
   const { ...dynamicIds } = useParams();
 
-  const { ...priceBooksDynamicsProps } = useSelector(selectorPriceBooks);
+  const { ...priceBooksDynamicsProps } = useSelector(selectorPricebook);
 
   const currentId = useMemo(() => Object.values(dynamicIds).pop(), [dynamicIds]);
   const endLevel = useMemo(() => dynamicIds.hasOwnProperty("distributorPbId"), [dynamicIds]);

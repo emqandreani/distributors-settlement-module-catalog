@@ -1,37 +1,34 @@
 import { STATUS } from "constants/status";
 
 import { faArrowLeft } from "@fortawesome/pro-regular-svg-icons";
-import {
-  cleanDistributorRequest,
-  fetchDistributors,
-  selectorDistributor,
-} from "app/slices/distributor";
 import { DistributorFilter } from "components/DistributorFilter";
 import { SecondaryButton } from "components/SecondaryButton";
 import AssignPriceBookContainer from "containers/AssignPriceBookContainer";
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 import styles from "./index.module.scss";
+import { selectorDistributor } from "features/distributor/slice";
+import { useLocalDispatch, useLocalSelector } from "app/store";
+import { fetchDistributor } from "features/distributor/asyncActions";
 
 const AssignPriceBook = () => {
-  const dispatch = useDispatch();
-  const { assignDistributorsRequest } = useSelector(selectorDistributor);
+  const dispatch = useLocalDispatch();
+  const { postResponse } = useLocalSelector(selectorDistributor);
 
   useEffect(() => {
-    dispatch(fetchDistributors());
+    dispatch(fetchDistributor());
     if (
-      assignDistributorsRequest?.status === STATUS.SUCCESSFUL ||
-      assignDistributorsRequest?.status === STATUS.FAILED
+      postResponse?.status === STATUS.SUCCESSFUL ||
+      postResponse?.status === STATUS.FAILED
     ) {
-      dispatch(fetchDistributors());
-      setTimeout(() => {
-        dispatch(cleanDistributorRequest({ type: "put", payload: null }));
-      }, 5000);
+      dispatch(fetchDistributor());
+      // setTimeout(() => {
+      //   dispatch(cleanDistributorRequest({ type: "put", payload: null }));
+      // }, 5000);
     }
 
     return () => {};
-  }, [assignDistributorsRequest?.status, dispatch]);
+  }, [postResponse?.status, dispatch]);
 
   return (
     <div className={styles["assign-page-container"]}>

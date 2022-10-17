@@ -1,5 +1,6 @@
-import { selectorPriceBooks } from "app/slices/priceBooks";
-import { IPriceBook } from "interfaces/PriceBook";
+
+import { selectorPricebook } from "features/pricebook/slice";
+import { IPriceBook } from "interfaces/pricebook";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
@@ -12,7 +13,7 @@ const useConceptContainer = () => {
     selectedBranchPriceBookForAddition,
     selectedVehiclePriceBookForAddition,
     selectedDistributorPriceBookForAddition,
-  } = useSelector(selectorPriceBooks);
+  } = useSelector(selectorPricebook);
 
   useEffect(() => {
     if (basePriceBookForAddition) setCurrentPriceBook(basePriceBookForAddition);

@@ -1,20 +1,15 @@
 import { Button } from "@architecture-it/stylesystem/Button";
 import { faArrowLeft } from "@fortawesome/pro-regular-svg-icons";
 import { Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
-import {
-  addNewPriceBook,
-  createPriceBook,
-  modifyPriceBook,
-  saveEditedPriceBook,
-  saveNewPriceBook,
-  selectorPriceBooks,
-  updatePriceBook,
-} from "app/slices/priceBooks";
+import { store, useLocalDispatch, useLocalSelector } from "app/store";
+
 import { PrimaryButton } from "components/PrimaryButton";
-import { IPriceBookDto } from "interfaces/DTO/PriceBookDto";
-import { IUpdatePriceBookDto } from "interfaces/DTO/UpdatePriceBookDto";
+import { createPricebook, modifyPricebook } from "features/pricebook/asyncActions";
+import { addNewPriceBook, saveEditedPriceBook, saveNewPriceBook, selectorPricebook, updatePriceBook } from "features/pricebook/slice";
+import { IPostPriceBookDto, IUpdatePriceBookDto } from "interfaces/pricebook";
+
+
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 import styles from "./index.module.scss";
 
@@ -24,8 +19,8 @@ export interface PriceBookDialogProps {
 }
 
 export const PriceBookDialog: React.FC<PriceBookDialogProps> = ({ open, requestType }) => {
-  const dispatch = useDispatch();
-  const { newPriceBook, editedPriceBook } = useSelector(selectorPriceBooks);
+  const dispatch = useLocalDispatch();
+  const { newPriceBook, editedPriceBook } = useLocalSelector(selectorPricebook);
 
   return (
     <Dialog
@@ -89,12 +84,12 @@ export const PriceBookDialog: React.FC<PriceBookDialogProps> = ({ open, requestT
           onClick={
             requestType === "create"
               ? () => {
-                  dispatch(createPriceBook(newPriceBook as IPriceBookDto));
+                  dispatch(createPricebook(newPriceBook as IPostPriceBookDto));
                   dispatch(saveNewPriceBook(false));
                   dispatch(addNewPriceBook(null));
                 }
               : () => {
-                  dispatch(modifyPriceBook(editedPriceBook as IUpdatePriceBookDto));
+                  dispatch(modifyPricebook(editedPriceBook as IUpdatePriceBookDto));
                   dispatch(saveEditedPriceBook(false));
                   dispatch(updatePriceBook(null));
                 }

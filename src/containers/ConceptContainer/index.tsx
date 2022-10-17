@@ -1,31 +1,31 @@
 import { priceBookConceptColumns } from "constants/priceBookConceptColumns";
 
 import { priceBookConceptsTableAdapter } from "adapters/priceBookConceptsTableAdapter";
-import { selectorPriceBooks } from "app/slices/priceBooks";
 import { ConceptDialogTable } from "components/ConceptDialogTable";
-import { IPriceBook } from "interfaces/PriceBook";
 import React from "react";
 import { useSelector } from "react-redux";
 import { ItemsChart } from "components/ItemsChart";
 import { DialogConceptTableFilters } from "components/DialogConceptTableFilters";
-import { IPriceBookItem } from "interfaces/PriceBookItem";
 import useConceptTables from "hooks/useConceptTables";
-import useConceptContainer from "hooks/useConceptContainer";
+import useConceptContainer from "containers/ConceptContainer/hooks";
 
 import styles from "./index.module.scss";
+import { selectorPricebook } from "features/pricebook/slice";
+import { IPriceBook } from "interfaces/pricebook";
+import { IPriceBookItem } from "interfaces/pricebook-item";
 
 export interface ConceptContainerProps {}
 
 export const ConceptContainer: React.FC<ConceptContainerProps> = () => {
   const { currentPriceBook } = useConceptContainer();
-  const { priceBook } = useSelector(selectorPriceBooks);
+  const { data } = useSelector(selectorPricebook);
 
   const { filteredDistribution, filteredServices } = useConceptTables(
-    currentPriceBook ?? (priceBook as IPriceBook)
+    currentPriceBook ?? (data as IPriceBook)
   );
 
   const { basePriceBookForAddition, selectedConcept, addedConcepts } =
-    useSelector(selectorPriceBooks);
+    useSelector(selectorPricebook);
 
   return (
     <div className={styles["concept-container"]}>

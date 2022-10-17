@@ -1,8 +1,7 @@
 import env from "@architecture-it/react-env";
 import { AxiosResponse } from "axios";
-import { IPriceBookDto } from "interfaces/DTO/PriceBookDto";
-import { IUpdatePriceBookDto } from "interfaces/DTO/UpdatePriceBookDto";
-import { IPriceBook } from "interfaces/PriceBook";
+import { IPostPriceBookDto, IPriceBook, IUpdatePriceBookDto } from "interfaces/pricebook";
+
 import { IResquest } from "interfaces/Request";
 import ServiceBase from "services/ServiceBase";
 
@@ -15,7 +14,7 @@ class PricebookService extends ServiceBase {
   }
 
   getPricebook = (id?: string) => this.client.get<IPriceBook>(PRICEBOOKS_ENDPOINT, id as any);
-  postPricebook = (data: IPriceBookDto) =>
+  postPricebook = (data: IPostPriceBookDto) =>
     this.client.post<ResponseType, AxiosResponse<IResquest>>(
       `${PRICEBOOKS_ENDPOINT}/${PRICEBOOK_PUT_ENDPOINT}`,
       data
