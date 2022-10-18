@@ -1,31 +1,31 @@
 import { priceBookConceptColumns } from "constants/priceBookConceptColumns";
 import { STATUS } from "constants/status";
 
-import { selectorLayout, togglePbSnack } from "app/slices/layout";
 import { ConceptItemDialog } from "components/ConceptItemDialog";
 import { PriceBookConcept } from "components/PriceBookConcept";
 import { PriceBookHeaderManage } from "components/PricebookHeader";
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { cleanPriceBookRequest, selectorPriceBooks } from "app/slices/priceBooks";
+import { useEffect } from "react";
 import { PriceBookDialog } from "components/PriceBookDialog";
 import { AlertSnack } from "components/AlertSnack";
 import { useNavigate, useParams } from "react-router";
 import { priceBookConceptsTableAdapter } from "adapters/priceBookConceptsTableAdapter";
 import useConceptTables from "hooks/useConceptTables";
-import { IPriceBook } from "interfaces/PriceBook";
-import { IPriceBookItem } from "interfaces/PriceBookItem";
+import { IPriceBook } from "interfaces/pricebook";
+import { useLocalDispatch, useLocalSelector } from "app/store";
+import { selectorLayout, togglePbSnack } from "features/layout/slice";
+import { selectorPricebook } from "features/pricebook/slice";
+import { IPriceBookItem } from "interfaces/pricebook-item";
 
 const ManagePriceBookContainer = () => {
-  const { toggleConceptItemDialog, togglePriceBookSnack } = useSelector(selectorLayout);
+  const { toggleConceptItemDialog, togglePriceBookSnack } = useLocalSelector(selectorLayout);
 
-  const { ...priceBooksDynamicsProps } = useSelector(selectorPriceBooks);
+  const { ...priceBooksDynamicsProps } = useLocalSelector(selectorPricebook);
   const { filteredDistribution, filteredServices } = useConceptTables(
-    priceBooksDynamicsProps.priceBook as IPriceBook
+    priceBooksDynamicsProps.data as IPriceBook
   );
   const { serviceConceptItems, distributionConceptItems } =
-    priceBooksDynamicsProps.priceBook as IPriceBook;
-  const dispatch = useDispatch();
+    priceBooksDynamicsProps.data as IPriceBook;
+  const dispatch = useLocalDispatch();
 
   const navigate = useNavigate();
   const { editPbId } = useParams();
@@ -58,7 +58,7 @@ const ManagePriceBookContainer = () => {
             defaultOpen
             priceBookConceptColumns={priceBookConceptColumns}
             rows={priceBookConceptsTableAdapter(
-              priceBooksDynamicsProps.priceBook as IPriceBook,
+              priceBooksDynamicsProps.data as IPriceBook,
               filteredDistribution ?? (distributionConceptItems as IPriceBookItem[])
             )}
             tableTitle="Conceptos de Distribucion"
@@ -69,7 +69,7 @@ const ManagePriceBookContainer = () => {
             defaultOpen
             priceBookConceptColumns={priceBookConceptColumns}
             rows={priceBookConceptsTableAdapter(
-              priceBooksDynamicsProps.priceBook as IPriceBook,
+              priceBooksDynamicsProps.data as IPriceBook,
               filteredServices ?? (serviceConceptItems as IPriceBookItem[])
             )}
             tableTitle="Conceptos de Servicios"
@@ -92,7 +92,7 @@ const ManagePriceBookContainer = () => {
           type="success"
           onClose={() => {
             dispatch(togglePbSnack(false));
-            dispatch(cleanPriceBookRequest({ payload: null, type: "post" }));
+            // dispatch(cleanPriceBookRequest({ payload: null, type: "post" }));
             navigate("/catalogo/librodeprecios");
           }}
         />
@@ -104,7 +104,7 @@ const ManagePriceBookContainer = () => {
           type="success"
           onClose={() => {
             dispatch(togglePbSnack(false));
-            dispatch(cleanPriceBookRequest({ payload: null, type: "put" }));
+            // dispatch(cleanPriceBookRequest({ payload: null, type: "put" }));
             navigate("/catalogo/librodeprecios");
           }}
         />
@@ -112,5 +112,7 @@ const ManagePriceBookContainer = () => {
     </>
   );
 };
+
+
 
 export default ManagePriceBookContainer;

@@ -1,4 +1,4 @@
-import { IPriceBook } from "interfaces/PriceBook";
+import { IPriceBook } from "interfaces/pricebook";
 
 const useFilterStates = (subPricebooks: IPriceBook[]) => {
   let FILTER_STATES = new Map();

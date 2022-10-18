@@ -1,21 +1,19 @@
 import { DISTRIBUTOR_COLS } from "constants/tableColumns";
-
 import { DistributorTable } from "components/DistributorTable";
-import React from "react";
 import { DistributorsChart } from "components/DistributorsChart";
-import { useSelector } from "react-redux";
-import { selectorDistributor } from "app/slices/distributor";
-import { IDistributor } from "interfaces/Distributor";
 
 import styles from "./index.module.scss";
+import { selectorDistributor } from "features/distributor/slice";
+import { useLocalSelector } from "app/store";
+import { IDistributor } from "interfaces/distributor";
 const AssignPriceBookContainer = () => {
-  const { distributors } = useSelector(selectorDistributor);
+  const { data } = useLocalSelector(selectorDistributor);
 
   return (
     <div className={styles["assign-pb-container"]}>
-      {distributors && (
+      {data && (
         <>
-          <DistributorTable columns={DISTRIBUTOR_COLS} rows={distributors as IDistributor[]} />
+          <DistributorTable columns={DISTRIBUTOR_COLS} rows={data as IDistributor[]} />
           <DistributorsChart />
         </>
       )}

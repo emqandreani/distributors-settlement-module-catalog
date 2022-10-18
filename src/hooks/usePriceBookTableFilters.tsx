@@ -1,6 +1,6 @@
-import { selectorPriceBooks, selectStateFlag } from "app/slices/priceBooks";
+import { useLocalDispatch, useLocalSelector } from "app/store";
+import { selectorPricebook, selectStateFlag } from "features/pricebook/slice";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 import useFilterStates from "./useFilterStates";
 
@@ -8,10 +8,10 @@ const usePriceBookTableFilters = () => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const [selectedState, setSelectedState] = useState<null | string>(null);
 
-  const dispatch = useDispatch();
+  const dispatch = useLocalDispatch();
 
   const checkRef = useRef(null);
-  const { ...priceBooksDynamicsProps } = useSelector(selectorPriceBooks);
+  const { ...priceBooksDynamicsProps } = useLocalSelector(selectorPricebook);
   const FILTER_STATES = useFilterStates(priceBooksDynamicsProps.subPriceBooks);
 
   const handleCheck = useCallback(

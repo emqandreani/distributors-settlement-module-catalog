@@ -2,11 +2,12 @@ import { faAngleDown } from "@fortawesome/pro-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import { GridColDef } from "@mui/x-data-grid";
-import { IPriceBookConceptsTable } from "adapters/priceBookConceptsTableAdapter";
-import { searchConceptFlag } from "app/slices/priceBooks";
+
 import { PriceBookConceptTable } from "components/PriceBookConceptTable";
 import { SearchInput } from "components/SearchInput";
+import { searchConceptFlag } from "features/pricebook";
 import useSearchInput from "hooks/useSearchInput";
+import { IPriceBookConceptsTable } from "interfaces/pricebook";
 import React from "react";
 
 import styles from "./index.module.scss";

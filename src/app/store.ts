@@ -5,12 +5,14 @@ import distributor from "features/distributor";
 import pricebook from "features/pricebook";
 import pricebookItem from "features/pricebook-item";
 import layout from "features/layout";
+import alert from "features/alert";
 
 export const reducers = combineReducers({
   distributor,
   pricebook,
   pricebookItem,
   layout,
+  alert
 });
 
 export const store = configureStore({

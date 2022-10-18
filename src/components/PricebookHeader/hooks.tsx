@@ -1,20 +1,17 @@
 import { priceBookHeaderAdapater } from "adapters/priceBookHeaderAdapter";
-import {
-  addNewPriceBook,
-  updatePriceBook,
-  selectorPriceBooks,
-  selectPriceBook,
-} from "app/slices/priceBooks";
-import { IPriceBook } from "interfaces/PriceBook";
+import { useLocalSelector } from "app/store";
+import { addNewPriceBook, selectorPricebook, selectPriceBook, updatePriceBook } from "features/pricebook/slice";
+import { IPriceBook } from "interfaces/pricebook";
+
 import { ChangeEvent, useCallback, useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 
-const usePriceBookHeader = () => {
-  const { ...priceBooksDynamicsProps } = useSelector(selectorPriceBooks);
-  const { priceBook } = priceBooksDynamicsProps;
-  const { id, startDate, endDate } = priceBook as IPriceBook;
-  const { ...props } = priceBookHeaderAdapater(priceBooksDynamicsProps.priceBook as IPriceBook);
+export const usePriceBookHeader = () => {
+  const { ...priceBooksDynamicsProps } = useLocalSelector(selectorPricebook);
+  const { data } = priceBooksDynamicsProps;
+  const { id, startDate, endDate } = data as IPriceBook;
+  const { ...props } = priceBookHeaderAdapater(priceBooksDynamicsProps.data as IPriceBook);
 
   const [startDateValue, setStartDateValue] = useState<Date | null>(null);
   const [endDateValue, setEndDateValue] = useState<Date | null>(null);
@@ -86,5 +83,3 @@ const usePriceBookHeader = () => {
     handleEndDate,
   };
 };
-
-export default usePriceBookHeader;

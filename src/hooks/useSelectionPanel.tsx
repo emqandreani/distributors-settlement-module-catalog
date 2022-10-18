@@ -1,5 +1,5 @@
 import { SelectChangeEvent } from "@mui/material";
-import { selectBaseSimulatedPriceBook, selectNewSimulatedPriceBook } from "app/slices/priceBooks";
+import { selectBaseSimulatedPriceBook, selectNewSimulatedPriceBook } from "features/pricebook";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 

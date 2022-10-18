@@ -1,15 +1,16 @@
+import { useLocalDispatch, useLocalSelector } from "app/store";
 import { PRICEBOOKS_STATES } from "constants/pricebookStates";
+import { selectorPricebook, selectPriceBook } from "features/pricebook/slice";
+import { IPriceBook } from "interfaces/pricebook";
 
-import { selectorPriceBooks, selectPriceBook } from "app/slices/priceBooks";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { IPriceBook } from "interfaces/PriceBook";
 
 const useFilteredPriceBook = () => {
   const [filteredPriceBooks, setFilteredPriceBooks] = useState<IPriceBook[] | null>(null);
-  const dispatch = useDispatch();
+  const dispatch = useLocalDispatch();
 
-  const { ...priceBooksDynamicsProps } = useSelector(selectorPriceBooks);
+  const { ...priceBooksDynamicsProps } = useLocalSelector(selectorPricebook);
 
   useEffect(() => {
     if (priceBooksDynamicsProps.stateFilterFlag) {

@@ -1,12 +1,12 @@
 import { faPlus } from "@fortawesome/pro-regular-svg-icons";
 import { Checkbox } from "@mui/material";
-import { filterPriceBookByString, selectorPriceBooks } from "app/slices/priceBooks";
 import { PrimaryButton } from "components/PrimaryButton";
 import { SearchInput } from "components/SearchInput";
+import { filterPriceBookByString, selectorPricebook } from "features/pricebook/slice";
 import usePriceBookTableFilters from "hooks/usePriceBookTableFilters";
 import useSearchInput from "hooks/useSearchInput";
 import { ApplicationLevelTypeName } from "interfaces/ApplicationLevel";
-import { IPriceBook } from "interfaces/PriceBook";
+import { IPriceBook } from "interfaces/pricebook";
 import React from "react";
 import { useSelector } from "react-redux";
 
@@ -18,10 +18,10 @@ export const PriceBookTableFilters: React.FC<PriceBookTableFiltersProps> = () =>
   const { value, handleSearch, handleSubmit } = useSearchInput({
     submitAction: filterPriceBookByString,
   });
-  const { priceBook } = useSelector(selectorPriceBooks);
+  const { data } = useSelector(selectorPricebook);
   const {
     applicationLevel: { applicationLevelTypeName },
-  } = priceBook as IPriceBook;
+  } = data as IPriceBook;
 
   return (
     <div className={styles["pricebook-filter-container"]}>

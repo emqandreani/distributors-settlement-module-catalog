@@ -1,5 +1,5 @@
+import { toggleSimulator } from "features/layout";
 import { useCallback, useEffect, useState } from "react";
-import { toggleSimulator } from "app/slices/layout";
 import { useDispatch } from "react-redux";
 
 const useToggler = () => {

@@ -2,17 +2,18 @@ import { Input } from "@architecture-it/stylesystem";
 import { faArrowLeft, faCodeCompare, faPlus, faSave } from "@fortawesome/pro-regular-svg-icons";
 import { FormLabel, TextField } from "@mui/material";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
-import { toggleConceptDialog } from "app/slices/layout";
 import { PrimaryButton } from "components/PrimaryButton";
 import { SecondaryButton } from "components/SecondaryButton";
 import React, { ReactNode, useMemo } from "react";
 import { useDispatch } from "react-redux";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import usePriceBookHeader from "hooks/usePriceBookHeader";
-import { saveEditedPriceBook, saveNewPriceBook } from "app/slices/priceBooks";
+import { usePriceBookHeader } from "./hooks";
 import { useNavigate } from "react-router";
 
 import styles from "./index.module.scss";
+import { toggleConceptDialog } from "features/layout";
+import { useLocalDispatch } from "app/store";
+import { saveEditedPriceBook, saveNewPriceBook } from "features/pricebook";
 
 export interface PricebookHeaderProps {
   backTo?: {
@@ -29,14 +30,12 @@ interface PriceBookHeaderBaseProps {
   saveBtn?: boolean;
 }
 
+const location = window.location.href;
+
 const PriceBookHeaderBase: React.FC<PriceBookHeaderBaseProps> = ({ children, backTo, saveBtn }) => {
-  const dispatch = useDispatch();
+  const dispatch = useLocalDispatch();
 
   const navigate = useNavigate();
-
-  const location = useMemo(() => {
-    return window.location.href;
-  }, []);
 
   return (
     <div className={styles["header-container"]}>

@@ -1,5 +1,5 @@
 import { IPriceBook } from "interfaces/pricebook";
-import { IPriceBookItem } from "interfaces/PriceBookItem";
+import { IPriceBookItem } from "interfaces/pricebook-item";
 
 export const priceBookConceptsTableAdapter = (
   priceBook: IPriceBook,

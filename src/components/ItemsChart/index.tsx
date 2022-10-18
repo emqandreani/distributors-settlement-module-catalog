@@ -2,11 +2,11 @@ import { ACTIONS_COL, ITEMS_CHART_COLS } from "constants/tableColumns";
 
 import { DataGrid } from "@mui/x-data-grid";
 import React from "react";
-import { IPriceBookConceptsTable } from "adapters/priceBookConceptsTableAdapter";
 import useChartActions from "hooks/useChartActions";
 import { NoRowsItemChart } from "components/NoRows";
 
 import styles from "./index.module.scss";
+import { IPriceBookConceptsTable } from "interfaces/pricebook";
 
 export interface ItemsChartProps {
   rows: IPriceBookConceptsTable[];

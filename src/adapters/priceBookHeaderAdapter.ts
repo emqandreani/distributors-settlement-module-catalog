@@ -1,5 +1,5 @@
 import { differenceInDays } from "date-fns";
-import { IPriceBook } from "interfaces/PriceBook";
+import { IPriceBook } from "interfaces/pricebook";
 
 export const priceBookHeaderAdapater = (pricebook: IPriceBook) => {
   const {

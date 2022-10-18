@@ -11,7 +11,7 @@ const defaultProps: NoRowsProps = {
 
 describe("< NoRows />", () => {
   it("should render default without crash", () => {
-    const tree = render(<NoRows {...defaultProps} />);
+    const tree = render(<NoRows {...defaultProps}>sample text</NoRows>);
 
     expect(tree).toMatchSnapshot();
   });

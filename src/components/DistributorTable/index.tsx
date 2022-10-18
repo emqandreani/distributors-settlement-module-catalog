@@ -1,6 +1,6 @@
 import { DataGrid, esES, GridColDef } from "@mui/x-data-grid";
 import useAssignedDistributors from "hooks/useAssignedDistributors";
-import { IDistributor } from "interfaces/Distributor";
+import { IDistributor } from "interfaces/distributor";
 import React from "react";
 
 import styles from "./index.module.scss";

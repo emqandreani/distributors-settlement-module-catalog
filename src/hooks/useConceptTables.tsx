@@ -1,16 +1,16 @@
 import { CONCEPTS } from "constants/concepts";
+import { selectorPricebook } from "features/pricebook/slice";
+import { IPriceBook } from "interfaces/pricebook";
+import { IPriceBookItem } from "interfaces/pricebook-item";
 
-import { selectorPriceBooks } from "app/slices/priceBooks";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { IPriceBook } from "interfaces/PriceBook";
-import { IPriceBookItem } from "interfaces/PriceBookItem";
 
 const useConceptTables = (priceBook: IPriceBook) => {
   const [filteredServices, setFilteredServices] = useState<IPriceBookItem[] | null>(null);
   const [filteredDistribution, setFilteredDistribution] = useState<IPriceBookItem[] | null>(null);
 
-  const { filteredConceptFlag } = useSelector(selectorPriceBooks);
+  const { filteredConceptFlag } = useSelector(selectorPricebook);
   const { serviceConceptItems, distributionConceptItems } = priceBook as IPriceBook;
 
   useEffect(() => {

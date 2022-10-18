@@ -262,6 +262,6 @@ export const pricebookSlice = createSlice({
 
 export const selectorPricebook = (state: RootState) => state.pricebook;
 
-export const { selectPriceBook, selectStateFlag, saveEditedPriceBook, addNewPriceBook, saveNewPriceBook, updatePriceBook, searchConceptFlag, selectConcept, removeConceptItem, addConceptItems, addConceptItemsNewPriceBook, selectBaseSimulatedPriceBook, selectRegionalPriceBookForAddition, selectBranchPriceBookForAddition, selectDistributorPriceBookForAddition, selectVehiclePriceBookForAddition } = pricebookSlice.actions;
+export const { selectPriceBook, selectNewSimulatedPriceBook, filterPriceBookByString, selectStateFlag, saveEditedPriceBook, addNewPriceBook, saveNewPriceBook, updatePriceBook, searchConceptFlag, selectConcept, removeConceptItem, addConceptItems, addConceptItemsNewPriceBook, selectBaseSimulatedPriceBook, selectRegionalPriceBookForAddition, selectBranchPriceBookForAddition, selectDistributorPriceBookForAddition, selectVehiclePriceBookForAddition } = pricebookSlice.actions;
 
 export const reducer = pricebookSlice.reducer;
