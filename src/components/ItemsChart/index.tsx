@@ -4,9 +4,9 @@ import { DataGrid } from "@mui/x-data-grid";
 import React from "react";
 import useChartActions from "hooks/useChartActions";
 import { NoRowsItemChart } from "components/NoRows";
+import { IPriceBookConceptsTable } from "interfaces/pricebook";
 
 import styles from "./index.module.scss";
-import { IPriceBookConceptsTable } from "interfaces/pricebook";
 
 export interface ItemsChartProps {
   rows: IPriceBookConceptsTable[];

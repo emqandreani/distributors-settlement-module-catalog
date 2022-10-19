@@ -2,7 +2,6 @@ import { GridSelectionModel } from "@mui/x-data-grid";
 import { useLocalDispatch, useLocalSelector } from "app/store";
 import { addConceptItems, selectorPricebook } from "features/pricebook/slice";
 import { IPriceBookConceptsTable } from "interfaces/pricebook";
-
 import { useEffect, useState } from "react";
 
 const useConceptDialogTable = (rows: IPriceBookConceptsTable[]) => {

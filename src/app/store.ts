@@ -12,7 +12,7 @@ export const reducers = combineReducers({
   pricebook,
   pricebookItem,
   layout,
-  alert
+  alert,
 });
 
 export const store = configureStore({

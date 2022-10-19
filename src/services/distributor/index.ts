@@ -1,7 +1,6 @@
 import env from "@architecture-it/react-env";
 import { AxiosResponse } from "axios";
 import { IAssignDistributorDto, IDistributor } from "interfaces/distributor";
-
 import ServiceBase from "services/ServiceBase";
 
 const DISTRIBUTOR_ENDPOINT = env("DISTRIBUTOR_ENDPOINT");

@@ -1,8 +1,8 @@
-import { useLocalDispatch, useLocalSelector } from "app/store";
 import { PRICEBOOKS_STATES } from "constants/pricebookStates";
+
+import { useLocalDispatch, useLocalSelector } from "app/store";
 import { selectorPricebook, selectPriceBook } from "features/pricebook/slice";
 import { IPriceBook } from "interfaces/pricebook";
-
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 

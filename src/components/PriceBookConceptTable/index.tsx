@@ -3,9 +3,9 @@ import { ACTIONS_COL } from "constants/tableColumns";
 import React from "react";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { NoRowsPriceBookConcept } from "components/NoRows";
+import { IPriceBookConceptsTable } from "interfaces/pricebook";
 
 import styles from "./index.module.scss";
-import { IPriceBookConceptsTable } from "interfaces/pricebook";
 
 export interface PriceBookConceptTableProps {
   columns: GridColDef[];

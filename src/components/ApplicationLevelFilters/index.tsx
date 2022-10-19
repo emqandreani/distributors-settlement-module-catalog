@@ -1,10 +1,10 @@
 import { Select } from "@architecture-it/stylesystem";
 import { MenuItem } from "@mui/material";
-import useApplicationLevelFilters from "./hooks";
 import { selectorPricebook } from "features/pricebook/slice";
 import React from "react";
 import { useSelector } from "react-redux";
 
+import useApplicationLevelFilters from "./hooks";
 import styles from "./index.module.scss";
 
 export interface ApplicationLevelFiltersProps {

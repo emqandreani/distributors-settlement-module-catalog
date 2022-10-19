@@ -2,13 +2,16 @@ import { Button } from "@architecture-it/stylesystem/Button";
 import { faArrowLeft } from "@fortawesome/pro-regular-svg-icons";
 import { Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
 import { store, useLocalDispatch, useLocalSelector } from "app/store";
-
 import { PrimaryButton } from "components/PrimaryButton";
 import { createPricebook, modifyPricebook } from "features/pricebook/asyncActions";
-import { addNewPriceBook, saveEditedPriceBook, saveNewPriceBook, selectorPricebook, updatePriceBook } from "features/pricebook/slice";
+import {
+  addNewPriceBook,
+  saveEditedPriceBook,
+  saveNewPriceBook,
+  selectorPricebook,
+  updatePriceBook,
+} from "features/pricebook/slice";
 import { IPostPriceBookDto, IUpdatePriceBookDto } from "interfaces/pricebook";
-
-
 import React from "react";
 
 import styles from "./index.module.scss";

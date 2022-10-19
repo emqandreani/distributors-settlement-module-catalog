@@ -3,8 +3,6 @@ import { useLocalDispatch, useLocalSelector } from "app/store";
 import { assignDistributors } from "features/distributor/asyncActions";
 import { selectorDistributor } from "features/distributor/slice";
 import { selectorPricebook } from "features/pricebook/slice";
-
-
 import { useCallback, useMemo } from "react";
 
 const useAssignPriceBook = () => {
@@ -39,7 +37,7 @@ const useAssignPriceBook = () => {
     } else if (assignedDistributors) {
       dispatch(assignDistributors(assignPriceBookAdapter(assignedDistributors[0], selectedPbId)));
     } else {
-        return
+      return;
     }
   }, [assignedDistributors, dispatch, selectedPbId]);
 

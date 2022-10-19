@@ -2,7 +2,6 @@ import { faAngleDown } from "@fortawesome/pro-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import { GridColDef } from "@mui/x-data-grid";
-
 import { PriceBookConceptTable } from "components/PriceBookConceptTable";
 import { SearchInput } from "components/SearchInput";
 import { searchConceptFlag } from "features/pricebook";
@@ -35,22 +34,20 @@ export const PriceBookConcept: React.FC<PriceBookConceptProps> = ({
   //Need to control this defaultExpanded
 
   return (
-    <>
-      <Accordion className={styles["concept-accordion-wrapper"]} defaultExpanded={defaultOpen}>
-        <AccordionSummary
-          aria-controls="panel2a-content"
-          expandIcon={<FontAwesomeIcon className={styles["angle-down-icon"]} icon={faAngleDown} />}
-          id="panel2a-header"
-        >
-          <div className={styles["pricebook-concept-header-top"]}>
-            <h2 className={styles["pricebook-concept-title"]}>{tableTitle}</h2>
-          </div>
-        </AccordionSummary>
-        <AccordionDetails>
-          <SearchInput handleSearch={handleSearch} handleSubmit={handleSubmit} value={value} />
-          <PriceBookConceptTable columns={priceBookConceptColumns} rows={rows} />
-        </AccordionDetails>
-      </Accordion>
-    </>
+    <Accordion className={styles["concept-accordion-wrapper"]} defaultExpanded={defaultOpen}>
+      <AccordionSummary
+        aria-controls="panel2a-content"
+        expandIcon={<FontAwesomeIcon className={styles["angle-down-icon"]} icon={faAngleDown} />}
+        id="panel2a-header"
+      >
+        <div className={styles["pricebook-concept-header-top"]}>
+          <h2 className={styles["pricebook-concept-title"]}>{tableTitle}</h2>
+        </div>
+      </AccordionSummary>
+      <AccordionDetails>
+        <SearchInput handleSearch={handleSearch} handleSubmit={handleSubmit} value={value} />
+        <PriceBookConceptTable columns={priceBookConceptColumns} rows={rows} />
+      </AccordionDetails>
+    </Accordion>
   );
 };

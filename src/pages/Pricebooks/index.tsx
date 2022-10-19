@@ -10,22 +10,20 @@ import { PriceBookTable } from "components/PriceBookTable";
 import { priceBooksTableAdapter } from "adapters/priceBooksTableAdapter";
 import { PriceBookTableFilters } from "components/PriceBookTableFilters";
 import { useSelector } from "react-redux";
-
 import { PriceBookConcept } from "components/PriceBookConcept";
 import { priceBookHeaderAdapater } from "adapters/priceBookHeaderAdapter";
 import { PricebookHeader } from "components/PricebookHeader";
 import useConceptTables from "hooks/useConceptTables";
 import { ConceptItemDialog } from "components/ConceptItemDialog";
-
 import useFilteredPriceBook from "hooks/useFilteredPriceBook";
-import useSelectPriceBook from "./hooks"
 import { priceBookConceptsTableAdapter } from "adapters/priceBookConceptsTableAdapter";
-
-import styles from "./index.module.scss";
 import { selectorPricebook } from "features/pricebook/slice";
 import { selectorLayout } from "features/layout/slice";
 import { IPriceBookItem } from "interfaces/pricebook-item";
 import { IPriceBook } from "interfaces/pricebook";
+
+import styles from "./index.module.scss";
+import useSelectPriceBook from "./hooks";
 
 interface ManagePricebookPageProps {
   children: ReactNode;
@@ -44,9 +42,7 @@ const PriceBookPage = () => {
   const { serviceConceptItems, distributionConceptItems } =
     priceBooksDynamicsProps.data as IPriceBook;
 
-  const { ...headerProps } = priceBookHeaderAdapater(
-    priceBooksDynamicsProps.data as IPriceBook
-  );
+  const { ...headerProps } = priceBookHeaderAdapater(priceBooksDynamicsProps.data as IPriceBook);
 
   return (
     <div className={styles["catalogs-page-container"]}>

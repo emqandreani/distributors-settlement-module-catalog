@@ -8,11 +8,11 @@ import { ItemsChart } from "components/ItemsChart";
 import { DialogConceptTableFilters } from "components/DialogConceptTableFilters";
 import useConceptTables from "hooks/useConceptTables";
 import useConceptContainer from "containers/ConceptContainer/hooks";
-
-import styles from "./index.module.scss";
 import { selectorPricebook } from "features/pricebook/slice";
 import { IPriceBook } from "interfaces/pricebook";
 import { IPriceBookItem } from "interfaces/pricebook-item";
+
+import styles from "./index.module.scss";
 
 export interface ConceptContainerProps {}
 

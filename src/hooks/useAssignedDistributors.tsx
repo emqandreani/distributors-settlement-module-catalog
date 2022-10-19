@@ -1,7 +1,6 @@
 import { GridSelectionModel } from "@mui/x-data-grid";
 import { selectAssignedDistributors } from "features/distributor";
 import { IDistributor } from "interfaces/distributor";
-
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 

@@ -7,8 +7,8 @@ import { ConceptContainer } from "containers/ConceptContainer";
 import { toggleConceptDialog } from "features/layout";
 import { addConceptItems } from "features/pricebook";
 import React from "react";
-import useDispatchPriceBookItem from "./hooks";
 
+import useDispatchPriceBookItem from "./hooks";
 import styles from "./index.module.scss";
 
 export interface ConceptItemDialogProps {

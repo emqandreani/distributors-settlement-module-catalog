@@ -5,11 +5,11 @@ import { DistributorFilter } from "components/DistributorFilter";
 import { SecondaryButton } from "components/SecondaryButton";
 import AssignPriceBookContainer from "containers/AssignPriceBookContainer";
 import React, { useEffect } from "react";
-
-import styles from "./index.module.scss";
 import { selectorDistributor } from "features/distributor/slice";
 import { useLocalDispatch, useLocalSelector } from "app/store";
 import { fetchDistributor } from "features/distributor/asyncActions";
+
+import styles from "./index.module.scss";
 
 const AssignPriceBook = () => {
   const dispatch = useLocalDispatch();
@@ -17,10 +17,7 @@ const AssignPriceBook = () => {
 
   useEffect(() => {
     dispatch(fetchDistributor());
-    if (
-      postResponse?.status === STATUS.SUCCESSFUL ||
-      postResponse?.status === STATUS.FAILED
-    ) {
+    if (postResponse?.status === STATUS.SUCCESSFUL || postResponse?.status === STATUS.FAILED) {
       dispatch(fetchDistributor());
       // setTimeout(() => {
       //   dispatch(cleanDistributorRequest({ type: "put", payload: null }));

@@ -113,6 +113,4 @@ const ManagePriceBookContainer = () => {
   );
 };
 
-
-
 export default ManagePriceBookContainer;

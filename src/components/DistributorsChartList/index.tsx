@@ -6,10 +6,10 @@ import { NoRowsUser, NoRowsUserSuccessAsssign } from "components/NoRows";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SuspenseLoader } from "components/SuspenseLoader";
-
-import styles from "./index.module.scss";
 import { useLocalDispatch } from "app/store";
 import { removeAssignedDistributor, selectorDistributor } from "features/distributor/slice";
+
+import styles from "./index.module.scss";
 
 export interface DistributorsChartListProps {}
 

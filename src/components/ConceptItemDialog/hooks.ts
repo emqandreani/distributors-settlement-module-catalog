@@ -1,7 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addConceptItems, addConceptItemsNewPriceBook, selectorPricebook } from "features/pricebook/slice";
+import {
+  addConceptItems,
+  addConceptItemsNewPriceBook,
+  selectorPricebook,
+} from "features/pricebook/slice";
 import { createPricebookItem } from "features/pricebook-item/asyncActions";
-
 import { useCallback } from "react";
 import { postConceptItemAdapter } from "adapters/postConceptItemAdapter";
 import { IPriceBook } from "interfaces/pricebook";
@@ -18,9 +21,7 @@ const useDispatchPriceBookItem = () => {
         dispatch(createPricebookItem(postConceptItemAdapter(concept, data as IPriceBook)))
       );
     } else {
-      dispatch(
-        createPricebookItem(postConceptItemAdapter(addedConcepts[0], data as IPriceBook))
-      );
+      dispatch(createPricebookItem(postConceptItemAdapter(addedConcepts[0], data as IPriceBook)));
     }
   }, [addedConcepts, dispatch, data]);
 

@@ -5,10 +5,10 @@ import { ApplicationLevelFilters } from "components/ApplicationLevelFilters";
 import { DistributorsChartList } from "components/DistributorsChartList";
 import React from "react";
 import { useSelector } from "react-redux";
-
-import styles from "./index.module.scss";
 import { selectorDistributor } from "features/distributor/slice";
 import { useLocalSelector } from "app/store";
+
+import styles from "./index.module.scss";
 import useAssignPriceBook from "./hooks";
 
 export interface DistributorsChartProps {}

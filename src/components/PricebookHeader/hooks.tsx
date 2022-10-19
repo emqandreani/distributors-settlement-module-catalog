@@ -1,8 +1,12 @@
 import { priceBookHeaderAdapater } from "adapters/priceBookHeaderAdapter";
 import { useLocalSelector } from "app/store";
-import { addNewPriceBook, selectorPricebook, selectPriceBook, updatePriceBook } from "features/pricebook/slice";
+import {
+  addNewPriceBook,
+  selectorPricebook,
+  selectPriceBook,
+  updatePriceBook,
+} from "features/pricebook/slice";
 import { IPriceBook } from "interfaces/pricebook";
-
 import { ChangeEvent, useCallback, useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";

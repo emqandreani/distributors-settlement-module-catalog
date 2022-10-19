@@ -1,7 +1,7 @@
 const { dependencies } = require("./package.json");
 
 module.exports = {
-  name: "module",
+  name: "catalog",
   library: { type: "var", name: "catalog" },
   exposes: {
     "./App": "./src/App",

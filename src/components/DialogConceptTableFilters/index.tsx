@@ -6,8 +6,8 @@ import { searchConceptFlag, selectorPricebook } from "features/pricebook/slice";
 import useSearchInput from "hooks/useSearchInput";
 import React from "react";
 import { useSelector } from "react-redux";
-import useSelectConceptFilter from "./hooks";
 
+import useSelectConceptFilter from "./hooks";
 import styles from "./index.module.scss";
 
 export interface DialogConceptTableFiltersProps {}
