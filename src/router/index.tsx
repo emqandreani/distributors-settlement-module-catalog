@@ -1,4 +1,6 @@
+import { store } from "app/store";
 import ManagePriceBookContainer from "containers/ManagePriceBookContainer";
+import { fetchPriceBooks } from "features/pricebook/asyncActions";
 import PageLayout from "layout/PageLayout";
 import React, { lazy } from "react";
 import { Route, Routes as RoutesRouter } from "react-router-dom";
@@ -11,16 +13,19 @@ const ManagePriceBookPage = lazy(() =>
 const SimulatorPage = lazy(() => import("../pages/Simulator"));
 const AssignPriceBookPage = lazy(() => import("../pages/AssignPriceBook"));
 
+store.dispatch(fetchPriceBooks());
+
 const Router = () => {
   return (
     <RoutesRouter>
       <Route
+        index
         element={
           <PageLayout pageName="Libro de precios">
             <HomePage />
           </PageLayout>
         }
-        path="/catalogo"
+        path="/"
       />
       <Route
         element={
@@ -28,7 +33,7 @@ const Router = () => {
             <PricebooksPage />
           </PageLayout>
         }
-        path="/catalogo/librodeprecios"
+        path="/librodeprecios"
       />
       <Route
         element={
@@ -38,7 +43,7 @@ const Router = () => {
             </ManagePriceBookPage>
           </PageLayout>
         }
-        path="/catalogo/manage/create"
+        path="/manage/create"
       />
       <Route
         element={
@@ -48,7 +53,7 @@ const Router = () => {
             </ManagePriceBookPage>
           </PageLayout>
         }
-        path="/catalogo/manage/edit/:editPbId"
+        path="/manage/edit/:editPbId"
       />
       <Route
         element={
@@ -56,7 +61,7 @@ const Router = () => {
             <PricebooksPage />
           </PageLayout>
         }
-        path="/catalogo/librodeprecios/:regionalPbId"
+        path="/librodeprecios/:regionalPbId"
       />
       <Route
         element={
@@ -64,7 +69,7 @@ const Router = () => {
             <PricebooksPage />
           </PageLayout>
         }
-        path="/catalogo/librodeprecios/:regionalPbId/:branchPbId"
+        path="/librodeprecios/:regionalPbId/:branchPbId"
       />
       <Route
         element={
@@ -72,7 +77,7 @@ const Router = () => {
             <PricebooksPage />
           </PageLayout>
         }
-        path="/catalogo/librodeprecios/:regionalPbId/:branchPbId/:vehiclePbId"
+        path="/librodeprecios/:regionalPbId/:branchPbId/:vehiclePbId"
       />
       <Route
         element={
@@ -80,7 +85,7 @@ const Router = () => {
             <PricebooksPage />
           </PageLayout>
         }
-        path="/catalogo/librodeprecios/:regionalPbId/:branchPbId/:vehiclePbId/:distributorPbId"
+        path="/librodeprecios/:regionalPbId/:branchPbId/:vehiclePbId/:distributorPbId"
       />
       <Route
         element={
@@ -88,7 +93,7 @@ const Router = () => {
             <SimulatorPage />
           </PageLayout>
         }
-        path="/catalogo/simulador"
+        path="/simulador"
       />
       <Route
         element={
@@ -96,7 +101,7 @@ const Router = () => {
             <AssignPriceBookPage />
           </PageLayout>
         }
-        path="/catalogo/assign"
+        path="/assign"
       />
     </RoutesRouter>
   );

@@ -9,7 +9,6 @@ import React, { ReactNode } from "react";
 import { PriceBookTable } from "components/PriceBookTable";
 import { priceBooksTableAdapter } from "adapters/priceBooksTableAdapter";
 import { PriceBookTableFilters } from "components/PriceBookTableFilters";
-import { useSelector } from "react-redux";
 import { PriceBookConcept } from "components/PriceBookConcept";
 import { priceBookHeaderAdapater } from "adapters/priceBookHeaderAdapter";
 import { PricebookHeader } from "components/PricebookHeader";
@@ -21,6 +20,7 @@ import { selectorPricebook } from "features/pricebook/slice";
 import { selectorLayout } from "features/layout/slice";
 import { IPriceBookItem } from "interfaces/pricebook-item";
 import { IPriceBook } from "interfaces/pricebook";
+import { useLocalSelector } from "app/store";
 
 import styles from "./index.module.scss";
 import useSelectPriceBook from "./hooks";
@@ -33,9 +33,9 @@ const PriceBookPage = () => {
   const { filteredPriceBooks } = useFilteredPriceBook();
   const { endLevel } = useSelectPriceBook();
 
-  const { ...priceBooksDynamicsProps } = useSelector(selectorPricebook);
+  const { ...priceBooksDynamicsProps } = useLocalSelector(selectorPricebook);
 
-  const { toggleConceptItemDialog } = useSelector(selectorLayout);
+  const { toggleConceptItemDialog } = useLocalSelector(selectorLayout);
   const { filteredDistribution, filteredServices } = useConceptTables(
     priceBooksDynamicsProps.data as IPriceBook
   );

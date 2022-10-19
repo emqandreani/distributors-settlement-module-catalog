@@ -1,15 +1,15 @@
+import { useLocalDispatch, useLocalSelector } from "app/store";
 import { selectorPricebook, selectPriceBook, selectStateFlag } from "features/pricebook/slice";
 import { IPriceBook } from "interfaces/pricebook";
 import { useEffect, useMemo } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 
 const useSelectPriceBook = () => {
-  const dispatch = useDispatch();
+  const dispatch = useLocalDispatch();
 
   const { ...dynamicIds } = useParams();
 
-  const { ...priceBooksDynamicsProps } = useSelector(selectorPricebook);
+  const { ...priceBooksDynamicsProps } = useLocalSelector(selectorPricebook);
 
   const currentId = useMemo(() => Object.values(dynamicIds).pop(), [dynamicIds]);
   const endLevel = useMemo(() => dynamicIds.hasOwnProperty("distributorPbId"), [dynamicIds]);
