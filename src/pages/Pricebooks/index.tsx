@@ -5,7 +5,7 @@ import {
 } from "constants/tableTitles";
 import { priceBookConceptColumns } from "constants/priceBookConceptColumns";
 
-import React, { ReactNode } from "react";
+import React, { ReactNode, useMemo } from "react";
 import { PriceBookTable } from "components/PriceBookTable";
 import { priceBooksTableAdapter } from "adapters/priceBooksTableAdapter";
 import { PriceBookTableFilters } from "components/PriceBookTableFilters";
@@ -21,6 +21,7 @@ import { selectorLayout } from "features/layout/slice";
 import { IPriceBookItem } from "interfaces/pricebook-item";
 import { IPriceBook } from "interfaces/pricebook";
 import { useLocalSelector } from "app/store";
+import { SuspenseLoader } from "components/SuspenseLoader";
 
 import styles from "./index.module.scss";
 import useSelectPriceBook from "./hooks";
@@ -33,20 +34,19 @@ const PriceBookPage = () => {
   const { filteredPriceBooks } = useFilteredPriceBook();
   const { endLevel } = useSelectPriceBook();
 
-  const { ...priceBooksDynamicsProps } = useLocalSelector(selectorPricebook);
+  const { data, isLoading, subPriceBooks } = useLocalSelector(selectorPricebook);
 
   const { toggleConceptItemDialog } = useLocalSelector(selectorLayout);
-  const { filteredDistribution, filteredServices } = useConceptTables(
-    priceBooksDynamicsProps.data as IPriceBook
-  );
-  const { serviceConceptItems, distributionConceptItems } =
-    priceBooksDynamicsProps.data as IPriceBook;
+  const { filteredDistribution, filteredServices } = useConceptTables(data as IPriceBook);
+  const { serviceConceptItems, distributionConceptItems } = data as IPriceBook;
 
-  const { ...headerProps } = priceBookHeaderAdapater(priceBooksDynamicsProps.data as IPriceBook);
+  const { ...headerProps } = useMemo(() => priceBookHeaderAdapater(data as IPriceBook), [data]);
+
+  if (isLoading || !headerProps) return <SuspenseLoader />;
 
   return (
     <div className={styles["catalogs-page-container"]}>
-      {priceBooksDynamicsProps.subPriceBooks && priceBooksDynamicsProps.data && (
+      {subPriceBooks && data && (
         <>
           <PricebookHeader backTo={{ name: "Volver", path: "./.." }} />
 
@@ -54,7 +54,7 @@ const PriceBookPage = () => {
             defaultOpen={endLevel}
             priceBookConceptColumns={priceBookConceptColumns}
             rows={priceBookConceptsTableAdapter(
-              priceBooksDynamicsProps.data as IPriceBook,
+              data as IPriceBook,
               filteredDistribution ?? (distributionConceptItems as IPriceBookItem[])
             )}
             tableTitle={conceptsByDistributionTableTitle}
@@ -65,7 +65,7 @@ const PriceBookPage = () => {
             defaultOpen={endLevel}
             priceBookConceptColumns={priceBookConceptColumns}
             rows={priceBookConceptsTableAdapter(
-              priceBooksDynamicsProps.data as IPriceBook,
+              data as IPriceBook,
               filteredServices ?? (serviceConceptItems as IPriceBookItem[])
             )}
             tableTitle={conceptsByServiceTableTitle}
@@ -76,9 +76,7 @@ const PriceBookPage = () => {
               <PriceBookTableFilters />
               <PriceBookTable
                 columns={PRICEBOOKS_COLS}
-                rows={priceBooksTableAdapter(
-                  filteredPriceBooks ?? priceBooksDynamicsProps.subPriceBooks
-                )}
+                rows={priceBooksTableAdapter(filteredPriceBooks ?? subPriceBooks)}
               />
             </>
           )}

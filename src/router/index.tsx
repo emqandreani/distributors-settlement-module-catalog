@@ -1,8 +1,8 @@
-import { store } from "app/store";
+import { useLocalDispatch } from "app/store";
 import ManagePriceBookContainer from "containers/ManagePriceBookContainer";
 import { fetchPriceBooks } from "features/pricebook/asyncActions";
 import PageLayout from "layout/PageLayout";
-import React, { lazy } from "react";
+import React, { lazy, useEffect } from "react";
 import { Route, Routes as RoutesRouter } from "react-router-dom";
 
 const HomePage = lazy(() => import("../pages/Home"));
@@ -13,9 +13,13 @@ const ManagePriceBookPage = lazy(() =>
 const SimulatorPage = lazy(() => import("../pages/Simulator"));
 const AssignPriceBookPage = lazy(() => import("../pages/AssignPriceBook"));
 
-store.dispatch(fetchPriceBooks());
-
 const Router = () => {
+  const dispatch = useLocalDispatch();
+
+  useEffect(() => {
+    dispatch(fetchPriceBooks());
+  }, [dispatch]);
+
   return (
     <RoutesRouter>
       <Route

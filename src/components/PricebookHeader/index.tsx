@@ -4,8 +4,7 @@ import { FormLabel, TextField } from "@mui/material";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { PrimaryButton } from "components/PrimaryButton";
 import { SecondaryButton } from "components/SecondaryButton";
-import React, { ReactNode, useMemo } from "react";
-import { useDispatch } from "react-redux";
+import React, { ReactNode } from "react";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { useNavigate } from "react-router";
 import { toggleConceptDialog } from "features/layout";
@@ -35,7 +34,7 @@ const location = window.location.href;
 const PriceBookHeaderBase: React.FC<PriceBookHeaderBaseProps> = ({ children, backTo, saveBtn }) => {
   const dispatch = useLocalDispatch();
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   return (
     <div className={styles["header-container"]}>
@@ -47,7 +46,7 @@ const PriceBookHeaderBase: React.FC<PriceBookHeaderBaseProps> = ({ children, bac
           <PrimaryButton
             icon={faPlus}
             text="Asignar libro"
-            onClick={() => navigate("/catalogo/assign")}
+            // onClick={() => navigate("/catalogo/assign")}
           />
           {!location.includes("create") && (
             <>
