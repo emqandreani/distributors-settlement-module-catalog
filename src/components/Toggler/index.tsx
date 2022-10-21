@@ -1,6 +1,6 @@
-import useToggler from "hooks/useToggler";
 import React from "react";
 
+import useToggler from "./hooks";
 import styles from "./index.module.scss";
 
 export interface TogglerProps {}

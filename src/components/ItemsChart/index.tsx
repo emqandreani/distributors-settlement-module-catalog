@@ -2,11 +2,11 @@ import { ACTIONS_COL, ITEMS_CHART_COLS } from "constants/tableColumns";
 
 import { DataGrid } from "@mui/x-data-grid";
 import React from "react";
-import useChartActions from "hooks/useChartActions";
 import { NoRowsItemChart } from "components/NoRows";
 import { IPriceBookConceptsTable } from "interfaces/pricebook";
 
 import styles from "./index.module.scss";
+import useItemChart from "./hooks";
 
 export interface ItemsChartProps {
   rows: IPriceBookConceptsTable[];
@@ -14,7 +14,7 @@ export interface ItemsChartProps {
 }
 
 export const ItemsChart: React.FC<ItemsChartProps> = ({ title, rows }) => {
-  const { cellModesModel, handleCellFocus } = useChartActions();
+  const { cellModesModel, handleCellFocus } = useItemChart();
 
   return (
     <div className={styles["items-chart-wrapper"]}>

@@ -4,9 +4,8 @@ import { faTrash } from "@fortawesome/pro-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NoRowsUser, NoRowsUserSuccessAsssign } from "components/NoRows";
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { SuspenseLoader } from "components/SuspenseLoader";
-import { useLocalDispatch } from "app/store";
+import { useLocalDispatch, useLocalSelector } from "app/store";
 import { removeAssignedDistributor, selectorDistributor } from "features/distributor/slice";
 
 import styles from "./index.module.scss";
@@ -15,7 +14,7 @@ export interface DistributorsChartListProps {}
 
 export const DistributorsChartList: React.FC<DistributorsChartListProps> = () => {
   const dispatch = useLocalDispatch();
-  const { assignedDistributors, postResponse } = useSelector(selectorDistributor);
+  const { assignedDistributors, postResponse } = useLocalSelector(selectorDistributor);
 
   return (
     <ul className={styles["distributors-list-container"]}>

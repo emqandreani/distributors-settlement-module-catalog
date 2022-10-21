@@ -4,12 +4,12 @@ import { PANEL_TYPE } from "constants/simulatorPanels";
 import { priceBookHeaderAdapater } from "adapters/priceBookHeaderAdapter";
 import { PriceBookConcept } from "components/PriceBookConcept";
 import React from "react";
-import { useSelector } from "react-redux";
 import { Input } from "@architecture-it/stylesystem";
 import { priceBookConceptsTableAdapter } from "adapters/priceBookConceptsTableAdapter";
 import { IPriceBook } from "interfaces/pricebook";
 import { selectorLayout } from "features/layout/slice";
 import { IPriceBookItem } from "interfaces/pricebook-item";
+import { useLocalSelector } from "app/store";
 
 import styles from "./index.module.scss";
 
@@ -20,7 +20,7 @@ export interface SimulatorPanelProps {
 
 export const SimulatorPanel: React.FC<SimulatorPanelProps> = ({ priceBook, type }) => {
   const { ...headerProps } = priceBookHeaderAdapater(priceBook as IPriceBook);
-  const { toggleSimulatorPanel } = useSelector(selectorLayout);
+  const { toggleSimulatorPanel } = useLocalSelector(selectorLayout);
   const handleToggleStyles = (isToggled: boolean, type: "base" | "new") => {
     return isToggled && type === PANEL_TYPE.BASE
       ? "hidden"

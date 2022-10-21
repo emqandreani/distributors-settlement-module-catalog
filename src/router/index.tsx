@@ -42,26 +42,6 @@ const Router = () => {
       <Route
         element={
           <PageLayout pageName="Libro de precios">
-            <ManagePriceBookPage>
-              <ManagePriceBookContainer />
-            </ManagePriceBookPage>
-          </PageLayout>
-        }
-        path="/manage/create"
-      />
-      <Route
-        element={
-          <PageLayout pageName="Libro de precios">
-            <ManagePriceBookPage>
-              <ManagePriceBookContainer />
-            </ManagePriceBookPage>
-          </PageLayout>
-        }
-        path="/manage/edit/:editPbId"
-      />
-      <Route
-        element={
-          <PageLayout pageName="Libro de precios">
             <PricebooksPage />
           </PageLayout>
         }
@@ -91,6 +71,27 @@ const Router = () => {
         }
         path="/librodeprecios/:regionalPbId/:branchPbId/:vehiclePbId/:distributorPbId"
       />
+      <Route
+        element={
+          <PageLayout pageName="Libro de precios">
+            <ManagePriceBookPage>
+              <ManagePriceBookContainer />
+            </ManagePriceBookPage>
+          </PageLayout>
+        }
+        path="/manage/create"
+      />
+      <Route
+        element={
+          <PageLayout pageName="Libro de precios">
+            <ManagePriceBookPage>
+              <ManagePriceBookContainer />
+            </ManagePriceBookPage>
+          </PageLayout>
+        }
+        path="/manage/edit/:editPbId"
+      />
+
       <Route
         element={
           <PageLayout pageName="Simulador">

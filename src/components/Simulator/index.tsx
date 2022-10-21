@@ -1,5 +1,6 @@
 import { faArrowLeft, faSave } from "@fortawesome/pro-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useLocalSelector } from "app/store";
 import { SecondaryButton } from "components/SecondaryButton";
 import { SelectionPanel } from "components/SelectionPanel";
 import { SimulatorPanel } from "components/SimulatorPanel";
@@ -7,7 +8,6 @@ import { Toggler } from "components/Toggler";
 import { selectorPricebook } from "features/pricebook/slice";
 import { IPriceBook } from "interfaces/pricebook";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
 
 import styles from "./index.module.scss";
 
@@ -15,7 +15,7 @@ export interface SimulatorProps {}
 
 export const Simulator: React.FC<SimulatorProps> = () => {
   const [isSelected, setIsSelected] = useState<boolean>(false);
-  const { data } = useSelector(selectorPricebook);
+  const { data } = useLocalSelector(selectorPricebook);
 
   const handleSelection = () => {
     setIsSelected(true);

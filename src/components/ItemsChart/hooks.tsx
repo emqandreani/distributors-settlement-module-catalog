@@ -6,7 +6,7 @@ interface SelectedCellParams {
   field: string;
 }
 
-const useChartActions = () => {
+const useItemChart = () => {
   const [selectedCellParams, setSelectedCellParams] = useState<SelectedCellParams | null>(null);
   const [cellModesModel, setCellModesModel] = useState<GridCellModesModel>({});
 
@@ -71,4 +71,4 @@ const useChartActions = () => {
   };
 };
 
-export default useChartActions;
+export default useItemChart;
