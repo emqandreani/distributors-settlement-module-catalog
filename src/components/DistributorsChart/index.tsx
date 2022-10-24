@@ -4,7 +4,6 @@ import { Button } from "@architecture-it/stylesystem";
 import { ApplicationLevelFilters } from "components/ApplicationLevelFilters";
 import { DistributorsChartList } from "components/DistributorsChartList";
 import React from "react";
-import { useSelector } from "react-redux";
 import { selectorDistributor } from "features/distributor/slice";
 import { useLocalSelector } from "app/store";
 

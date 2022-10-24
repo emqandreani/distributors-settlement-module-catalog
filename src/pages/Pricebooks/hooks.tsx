@@ -9,8 +9,6 @@ const useSelectPriceBook = () => {
 
   const { ...dynamicIds } = useParams();
 
-  console.log(dynamicIds);
-
   const { ...priceBooksDynamicsProps } = useLocalSelector(selectorPricebook);
 
   const currentId = useMemo(() => Object.values(dynamicIds).pop(), [dynamicIds]);

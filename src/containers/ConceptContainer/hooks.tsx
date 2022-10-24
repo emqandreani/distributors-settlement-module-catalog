@@ -1,7 +1,7 @@
+import { useLocalSelector } from "app/store";
 import { selectorPricebook } from "features/pricebook/slice";
 import { IPriceBook } from "interfaces/pricebook";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 
 const useConceptContainer = () => {
   const [currentPriceBook, setCurrentPriceBook] = useState<IPriceBook | null>(null);
@@ -12,7 +12,7 @@ const useConceptContainer = () => {
     selectedBranchPriceBookForAddition,
     selectedVehiclePriceBookForAddition,
     selectedDistributorPriceBookForAddition,
-  } = useSelector(selectorPricebook);
+  } = useLocalSelector(selectorPricebook);
 
   useEffect(() => {
     if (basePriceBookForAddition) setCurrentPriceBook(basePriceBookForAddition);

@@ -4,7 +4,6 @@ import { useLocalDispatch, useLocalSelector } from "app/store";
 import { selectorPricebook, selectPriceBook } from "features/pricebook/slice";
 import { IPriceBook } from "interfaces/pricebook";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 const useFilteredPriceBook = () => {
   const [filteredPriceBooks, setFilteredPriceBooks] = useState<IPriceBook[] | null>(null);
