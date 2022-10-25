@@ -127,3 +127,45 @@ export const ACTIONS_COL: GridActionsColDef = {
     <ActionsCellItem key={params.row.id} id={params.row.id} type="Delete" />,
   ],
 };
+export const CONCEPT_COL: GridColDef[] = [
+  {
+    field: "concept",
+    headerName: "ID",
+    headerAlign: "center",
+    align: "center",
+    width: 50,
+    sortable: true,
+  },
+  {
+    field: "name",
+    headerName: "Nombre",
+    headerAlign: "center",
+    align: "center",
+    flex: 1,
+    sortable: true,
+  },
+  {
+    field: "description",
+    headerName: "Descripción",
+    headerAlign: "center",
+    align: "center",
+    flex: 1,
+    sortable: true,
+  },
+  {
+    field: "createdBy",
+    headerName: "Creador",
+    headerAlign: "center",
+    align: "center",
+    flex: 1,
+    sortable: true,
+  },
+  {
+    field: "createdAt",
+    headerName: "Fecha",
+    headerAlign: "center",
+    align: "center",
+    flex: 1,
+    sortable: true,
+  },
+];

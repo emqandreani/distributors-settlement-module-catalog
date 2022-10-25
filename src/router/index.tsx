@@ -12,6 +12,7 @@ const ManagePriceBookPage = lazy(() =>
 );
 const SimulatorPage = lazy(() => import("../pages/Simulator"));
 const AssignPriceBookPage = lazy(() => import("../pages/AssignPriceBook"));
+const CatalogConceptsPage = lazy(() => import("pages/CatalogConcepts"));
 
 const Router = () => {
   const dispatch = useLocalDispatch();
@@ -107,6 +108,14 @@ const Router = () => {
           </PageLayout>
         }
         path="/assign"
+      />
+      <Route
+        element={
+          <PageLayout pageName="Catálogo">
+            <CatalogConceptsPage />
+          </PageLayout>
+        }
+        path="/conceptos"
       />
     </RoutesRouter>
   );

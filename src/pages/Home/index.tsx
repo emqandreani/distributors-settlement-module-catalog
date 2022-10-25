@@ -9,7 +9,7 @@ import styles from "./index.module.scss";
 const HOME_ITEMS = [
   {
     name: "Catálogo",
-    path: "",
+    path: "conceptos",
     svg: catalogoIcon,
   },
   {
