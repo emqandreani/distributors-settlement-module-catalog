@@ -130,10 +130,10 @@ export const ACTIONS_COL: GridActionsColDef = {
 export const CONCEPT_COL: GridColDef[] = [
   {
     field: "concept",
-    headerName: "ID",
+    headerName: "Concepto",
     headerAlign: "center",
     align: "center",
-    width: 50,
+    flex: 1,
     sortable: true,
   },
   {
