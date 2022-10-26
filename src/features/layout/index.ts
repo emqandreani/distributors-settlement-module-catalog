@@ -1,1 +1,7 @@
-export { reducer as default, toggleConceptDialog, togglePbSnack, toggleSimulator } from "./slice";
+export {
+  reducer as default,
+  toggleConceptDialog,
+  togglePbSnack,
+  toggleSimulator,
+  toggleCatalogDialog,
+} from "./slice";

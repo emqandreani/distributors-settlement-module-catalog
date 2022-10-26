@@ -7,15 +7,25 @@ import { faArrowLeft, faPlus } from "@fortawesome/pro-regular-svg-icons";
 import { PrimaryButton } from "components/PrimaryButton";
 import { AccordionWrapper } from "components/AccordionWrapper";
 import { SearchInput } from "components/SearchInput";
+import { useLocalDispatch, useLocalSelector } from "app/store";
+import { selectorLayout, toggleCatalogDialog } from "features/layout/slice";
+import { CatalogConceptDialog } from "components/CatalogConceptDialog";
 
 import styles from "./index.module.scss";
 
 const CatalogConceptsPage = () => {
+  const { toggleCatalogConceptDialog } = useLocalSelector(selectorLayout);
+  const dispatch = useLocalDispatch();
+
   return (
     <div className={styles["concept-container"]}>
       <div className={styles["buttons-wrapper"]}>
         <SecondaryButton icon={faArrowLeft} path="./.." text="Volver" />
-        <PrimaryButton icon={faPlus} text="Crer concepto" />
+        <PrimaryButton
+          icon={faPlus}
+          text="Crear concepto"
+          onClick={() => dispatch(toggleCatalogDialog(true))}
+        />
       </div>
       <hr />
       <AccordionWrapper defaultOpen title="Conceptos de distribución">
@@ -34,6 +44,7 @@ const CatalogConceptsPage = () => {
         />
         <CatalogConceptTable columns={CONCEPT_COL} rows={[]} />
       </AccordionWrapper>
+      {toggleCatalogConceptDialog && <CatalogConceptDialog open={toggleCatalogConceptDialog} />}
     </div>
   );
 };
