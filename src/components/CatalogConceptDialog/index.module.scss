@@ -1,0 +1,18 @@
+.catalog-concept-dialog-container {
+  .checkbox-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .dialog-title {
+    font-size: 20px;
+  }
+
+  .textfield-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+  }
+}
