@@ -5,10 +5,14 @@ import { selectorPricebook } from "features/pricebook/slice";
 import { IPriceBook } from "interfaces/pricebook";
 import { IPriceBookItem } from "interfaces/pricebook-item";
 import { useEffect, useState } from "react";
+import { IServiceConceptItem } from "interfaces/service-concept";
+import { IDistributionConceptItem } from "interfaces/distribution-concept";
 
 const useConceptTables = (priceBook: IPriceBook) => {
-  const [filteredServices, setFilteredServices] = useState<IPriceBookItem[] | null>(null);
-  const [filteredDistribution, setFilteredDistribution] = useState<IPriceBookItem[] | null>(null);
+  const [filteredServices, setFilteredServices] = useState<IServiceConceptItem[] | null>(null);
+  const [filteredDistribution, setFilteredDistribution] = useState<
+    IDistributionConceptItem[] | null
+  >(null);
 
   const { filteredConceptFlag } = useLocalSelector(selectorPricebook);
   const { serviceConceptItems, distributionConceptItems } = priceBook as IPriceBook;
@@ -22,7 +26,7 @@ const useConceptTables = (priceBook: IPriceBook) => {
           .includes(filteredConceptFlag?.flag as string)
       );
 
-      setFilteredServices(filtered as IPriceBookItem[]);
+      setFilteredServices(filtered as IServiceConceptItem[]);
     }
     if (filteredConceptFlag?.type === CONCEPTS.DISTRIBUTION && distributionConceptItems) {
       const filtered = distributionConceptItems.filter((c) =>
@@ -32,7 +36,7 @@ const useConceptTables = (priceBook: IPriceBook) => {
           .includes(filteredConceptFlag?.flag as string)
       );
 
-      setFilteredDistribution(filtered as IPriceBookItem[]);
+      setFilteredDistribution(filtered as IDistributionConceptItem[]);
     }
 
     return () => {

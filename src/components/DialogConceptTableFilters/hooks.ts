@@ -3,9 +3,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 const useSelectConceptFilter = () => {
-  const [selectValue, setSelectValue] = useState<string | null>(null);
+  const [selectValue, setSelectValue] = useState<"service" | "distribution" | null>(null);
   const handleSelectValue = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectValue(event.target.value);
+    setSelectValue(event.target.value as "service" | "distribution");
     dispatch(searchConceptFlag(null));
   };
   const dispatch = useDispatch();

@@ -14,7 +14,8 @@ import { IPriceBook } from "interfaces/pricebook";
 import { useLocalDispatch, useLocalSelector } from "app/store";
 import { selectorLayout, togglePbSnack } from "features/layout/slice";
 import { selectorPricebook } from "features/pricebook/slice";
-import { IPriceBookItem } from "interfaces/pricebook-item";
+import { IDistributionConceptItem } from "interfaces/distribution-concept";
+import { IServiceConceptItem } from "interfaces/service-concept";
 
 const ManagePriceBookContainer = () => {
   const { toggleConceptItemDialog, togglePriceBookSnack } = useLocalSelector(selectorLayout);
@@ -59,7 +60,8 @@ const ManagePriceBookContainer = () => {
             priceBookConceptColumns={priceBookConceptColumns}
             rows={priceBookConceptsTableAdapter(
               priceBooksDynamicsProps.data as IPriceBook,
-              filteredDistribution ?? (distributionConceptItems as IPriceBookItem[])
+              filteredDistribution ?? (distributionConceptItems as IDistributionConceptItem[]),
+              "distribution"
             )}
             tableTitle="Conceptos de Distribucion"
             type="distribution"
@@ -70,7 +72,8 @@ const ManagePriceBookContainer = () => {
             priceBookConceptColumns={priceBookConceptColumns}
             rows={priceBookConceptsTableAdapter(
               priceBooksDynamicsProps.data as IPriceBook,
-              filteredServices ?? (serviceConceptItems as IPriceBookItem[])
+              filteredServices ?? (serviceConceptItems as IServiceConceptItem[]),
+              "service"
             )}
             tableTitle="Conceptos de Servicios"
             type="service"

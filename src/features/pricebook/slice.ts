@@ -145,7 +145,10 @@ export const pricebookSlice = createSlice({
     ) => {
       state.selectedDistributorPriceBookForAddition = action.payload;
     },
-    selectConcept: (state: InitialStateProps, action: PayloadAction<string | null>) => {
+    selectConcept: (
+      state: InitialStateProps,
+      action: PayloadAction<"service" | "distribution" | null>
+    ) => {
       state.selectedConcept = action.payload;
     },
     addConceptItems: (

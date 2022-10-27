@@ -9,8 +9,9 @@ import useConceptTables from "hooks/useConceptTables";
 import useConceptContainer from "containers/ConceptContainer/hooks";
 import { selectorPricebook } from "features/pricebook/slice";
 import { IPriceBook } from "interfaces/pricebook";
-import { IPriceBookItem } from "interfaces/pricebook-item";
 import { useLocalSelector } from "app/store";
+import { IDistributionConceptItem } from "interfaces/distribution-concept";
+import { IServiceConceptItem } from "interfaces/service-concept";
 
 import styles from "./index.module.scss";
 
@@ -40,27 +41,30 @@ export const ConceptContainer: React.FC<ConceptContainerProps> = () => {
                 : priceBookConceptsTableAdapter(
                     basePriceBookForAddition as IPriceBook,
                     selectedConcept === "distribution"
-                      ? (currentPriceBook.distributionConceptItems as IPriceBookItem[])
-                      : (currentPriceBook.serviceConceptItems as IPriceBookItem[])
+                      ? (currentPriceBook.distributionConceptItems as IDistributionConceptItem[])
+                      : (currentPriceBook.serviceConceptItems as IServiceConceptItem[]),
+                    selectedConcept
                   )
             }
           />
         )}
-        {filteredServices && (
+        {filteredServices && selectedConcept && (
           <ConceptDialogTable
             columns={priceBookConceptColumns}
             rows={priceBookConceptsTableAdapter(
               basePriceBookForAddition as IPriceBook,
-              filteredServices
+              filteredServices,
+              selectedConcept
             )}
           />
         )}
-        {filteredDistribution && (
+        {filteredDistribution && selectedConcept && (
           <ConceptDialogTable
             columns={priceBookConceptColumns}
             rows={priceBookConceptsTableAdapter(
               basePriceBookForAddition as IPriceBook,
-              filteredDistribution
+              filteredDistribution,
+              selectedConcept
             )}
           />
         )}

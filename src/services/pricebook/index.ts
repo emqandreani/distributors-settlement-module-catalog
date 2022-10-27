@@ -1,7 +1,7 @@
 import env from "@architecture-it/react-env";
 import { AxiosResponse } from "axios";
 import { IPostPriceBookDto, IPriceBook, IUpdatePriceBookDto } from "interfaces/pricebook";
-import { IResquest } from "interfaces/Request";
+import { IResquest } from "interfaces/requests";
 import ServiceBase from "services/ServiceBase";
 
 const PRICEBOOKS_ENDPOINT = env("PRICEBOOK_ENDPOINT") ?? "";

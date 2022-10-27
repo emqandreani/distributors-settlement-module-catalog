@@ -6,7 +6,7 @@ import { SearchInput } from "components/SearchInput";
 import { filterPriceBookByString, selectorPricebook } from "features/pricebook/slice";
 import usePriceBookTableFilters from "hooks/usePriceBookTableFilters";
 import useSearchInput from "hooks/useSearchInput";
-import { ApplicationLevelTypeName } from "interfaces/ApplicationLevel";
+import { IApplicationLevelTypeName } from "interfaces/enums";
 import { IPriceBook } from "interfaces/pricebook";
 import React from "react";
 
@@ -45,7 +45,7 @@ export const PriceBookTableFilters: React.FC<PriceBookTableFiltersProps> = () =>
           })}
       </div>
       <div className={styles["filter-wrapper-bottom"]}>
-        {applicationLevelTypeName !== ApplicationLevelTypeName.Vehicle && (
+        {applicationLevelTypeName !== IApplicationLevelTypeName.Vehicle && (
           <PrimaryButton icon={faPlus} path="/catalogo/manage/create" text="Agregar nuevo libro" />
         )}
         <SearchInput handleSearch={handleSearch} handleSubmit={handleSubmit} value={value} />

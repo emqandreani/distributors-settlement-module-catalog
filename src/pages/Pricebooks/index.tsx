@@ -22,6 +22,8 @@ import { IPriceBookItem } from "interfaces/pricebook-item";
 import { IPriceBook } from "interfaces/pricebook";
 import { useLocalSelector } from "app/store";
 import { SuspenseLoader } from "components/SuspenseLoader";
+import { IDistributionConceptItem } from "interfaces/distribution-concept";
+import { IServiceConceptItem } from "interfaces/service-concept";
 
 import styles from "./index.module.scss";
 import useSelectPriceBook from "./hooks";
@@ -55,7 +57,8 @@ const PriceBookPage = () => {
             priceBookConceptColumns={priceBookConceptColumns}
             rows={priceBookConceptsTableAdapter(
               data as IPriceBook,
-              filteredDistribution ?? (distributionConceptItems as IPriceBookItem[])
+              filteredDistribution ?? (distributionConceptItems as IDistributionConceptItem[]),
+              "distribution"
             )}
             tableTitle={conceptsByDistributionTableTitle}
             type="distribution"
@@ -66,7 +69,8 @@ const PriceBookPage = () => {
             priceBookConceptColumns={priceBookConceptColumns}
             rows={priceBookConceptsTableAdapter(
               data as IPriceBook,
-              filteredServices ?? (serviceConceptItems as IPriceBookItem[])
+              filteredServices ?? (serviceConceptItems as IServiceConceptItem[]),
+              "service"
             )}
             tableTitle={conceptsByServiceTableTitle}
             type="service"

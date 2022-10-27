@@ -8,8 +8,9 @@ import { Input } from "@architecture-it/stylesystem";
 import { priceBookConceptsTableAdapter } from "adapters/priceBookConceptsTableAdapter";
 import { IPriceBook } from "interfaces/pricebook";
 import { selectorLayout } from "features/layout/slice";
-import { IPriceBookItem } from "interfaces/pricebook-item";
 import { useLocalSelector } from "app/store";
+import { IServiceConceptItem } from "interfaces/service-concept";
+import { IDistributionConceptItem } from "interfaces/distribution-concept";
 
 import styles from "./index.module.scss";
 
@@ -109,7 +110,8 @@ export const SimulatorPanel: React.FC<SimulatorPanelProps> = ({ priceBook, type 
         priceBookConceptColumns={priceBookConceptColumns}
         rows={priceBookConceptsTableAdapter(
           priceBook,
-          priceBook.distributionConceptItems as IPriceBookItem[]
+          priceBook.distributionConceptItems as IDistributionConceptItem[],
+          "distribution"
         )}
         tableTitle="Conceptos de distribución"
         type="distribution"
@@ -119,7 +121,8 @@ export const SimulatorPanel: React.FC<SimulatorPanelProps> = ({ priceBook, type 
         priceBookConceptColumns={priceBookConceptColumns}
         rows={priceBookConceptsTableAdapter(
           priceBook,
-          priceBook.serviceConceptItems as IPriceBookItem[]
+          priceBook.serviceConceptItems as IServiceConceptItem[],
+          "service"
         )}
         tableTitle="Conceptos de servicio"
         type="service"

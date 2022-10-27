@@ -1,7 +1,7 @@
 import { Button } from "@architecture-it/stylesystem/Button";
 import { faArrowLeft } from "@fortawesome/pro-regular-svg-icons";
 import { Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
-import { store, useLocalDispatch, useLocalSelector } from "app/store";
+import { useLocalDispatch, useLocalSelector } from "app/store";
 import { PrimaryButton } from "components/PrimaryButton";
 import { createPricebook, modifyPricebook } from "features/pricebook/asyncActions";
 import {

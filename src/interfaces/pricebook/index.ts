@@ -1,8 +1,10 @@
-import { IApplicationLevel } from "interfaces/ApplicationLevel";
+import { IApplicationLevel } from "interfaces/application-level";
 import { IBaseSlice } from "interfaces/base-slice";
-import { IPriceBookItem } from "interfaces/pricebook-item";
-import { IPriceBookState } from "interfaces/PriceBookState";
-import { IResquest } from "interfaces/Request";
+import { IDistributionConceptItem } from "interfaces/distribution-concept";
+import { IAtedBy } from "interfaces/enums";
+import { IPriceBookState } from "interfaces/pricebook-state";
+import { IResquest } from "interfaces/requests";
+import { IServiceConceptItem } from "interfaces/service-concept";
 
 export interface IPriceBook {
   priceBookId: string;
@@ -18,13 +20,14 @@ export interface IPriceBook {
   priceBookParentId: null | string;
   priceBookChildren: IPriceBook[];
   applicationLevel: IApplicationLevel;
+  priceBookParent: null;
+  distributionConceptItems: IDistributionConceptItem[];
+  serviceConceptItems: IServiceConceptItem[];
   id: string;
   createdAt: Date;
   updatedAt: Date;
-  createdBy: string;
-  updatedBy: string;
-  distributionConceptItems?: IPriceBookItem[] | null;
-  serviceConceptItems?: IPriceBookItem[] | null;
+  createdBy: IAtedBy;
+  updatedBy: IAtedBy;
 }
 export interface IPostPriceBookDto {
   name: string;
@@ -96,7 +99,7 @@ export interface InitialStateProps extends IBaseSlice {
   editedPriceBook: IUpdatePriceBookDto | null;
   newPriceBookConcepts: IPriceBookConceptsTable[] | [];
   stateFilterFlag: string | null;
-  selectedConcept: string | null;
+  selectedConcept: "service" | "distribution" | null;
   filteredConceptFlag: IConceptFlag | null;
   baseSimulatedPriceBook: string | null;
   newSimulatedPriceBook: string | null;
