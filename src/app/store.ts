@@ -4,6 +4,8 @@ import { createDispatchHook, createSelectorHook, ReactReduxContextValue } from "
 import distributor from "features/distributor";
 import pricebook from "features/pricebook";
 import pricebookItem from "features/pricebook-item";
+import distributionConcept from "features/distribution-concept";
+import serviceConcept from "features/service-concept";
 import layout from "features/layout";
 import alert from "features/alert";
 
@@ -11,6 +13,8 @@ export const reducers = combineReducers({
   distributor,
   pricebook,
   pricebookItem,
+  distributionConcept,
+  serviceConcept,
   layout,
   alert,
 });

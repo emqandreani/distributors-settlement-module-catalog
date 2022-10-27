@@ -3,8 +3,16 @@ import React from "react";
 
 import styles from "./index.module.scss";
 
+export interface CatalogConceptTableRow {
+  concept: string;
+  name: string;
+  description: string;
+  createdBy: string;
+  createdAt: string;
+}
+
 export interface CatalogConceptTableProps {
-  rows: any;
+  rows: CatalogConceptTableRow[];
   columns: GridColDef[];
 }
 

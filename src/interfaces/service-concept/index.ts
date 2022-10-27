@@ -1,3 +1,4 @@
+import { IBaseSlice } from "interfaces/base-slice";
 import { IAtedBy } from "interfaces/enums";
 
 export interface IServiceConceptItem {
@@ -24,4 +25,7 @@ export interface IServiceConceptItem {
   updatedAt: Date;
   createdBy: IAtedBy;
   updatedBy: IAtedBy;
+}
+export interface InitialStateProps extends IBaseSlice {
+  data: IServiceConceptItem[];
 }

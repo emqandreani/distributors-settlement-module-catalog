@@ -1,7 +1,7 @@
 import { CONCEPT_COL } from "constants/tableColumns";
 
 import { CatalogConceptTable } from "components/CatalogConceptTable";
-import React from "react";
+import React, { useEffect } from "react";
 import { SecondaryButton } from "components/SecondaryButton";
 import { faArrowLeft, faPlus } from "@fortawesome/pro-regular-svg-icons";
 import { PrimaryButton } from "components/PrimaryButton";
@@ -10,12 +10,30 @@ import { SearchInput } from "components/SearchInput";
 import { useLocalDispatch, useLocalSelector } from "app/store";
 import { selectorLayout, toggleCatalogDialog } from "features/layout/slice";
 import { CatalogConceptDialog } from "components/CatalogConceptDialog";
+import { fetchDistributionConcept } from "features/distribution-concept/asyncActions";
+import { fetchServiceConcept } from "features/service-concept/asyncActions";
+import { selectorServiceConcept } from "features/service-concept/slice";
+import {
+  distributionTableAdapter,
+  serviceTableAdapter,
+} from "components/CatalogConceptTable/test-utils";
+import { selectorDistributionConcept } from "features/distribution-concept/slice";
 
 import styles from "./index.module.scss";
 
 const CatalogConceptsPage = () => {
   const { toggleCatalogConceptDialog } = useLocalSelector(selectorLayout);
   const dispatch = useLocalDispatch();
+
+  const { ...serviceProps } = useLocalSelector(selectorServiceConcept);
+  const { ...distributionProps } = useLocalSelector(selectorDistributionConcept);
+
+  useEffect(() => {
+    dispatch(fetchDistributionConcept());
+    dispatch(fetchServiceConcept());
+
+    return () => {};
+  }, [dispatch]);
 
   return (
     <div className={styles["concept-container"]}>
@@ -34,7 +52,10 @@ const CatalogConceptsPage = () => {
           handleSubmit={() => console.log("handleSubmit distribution")}
           value={"distribution value"}
         />
-        <CatalogConceptTable columns={CONCEPT_COL} rows={[]} />
+        <CatalogConceptTable
+          columns={CONCEPT_COL}
+          rows={distributionTableAdapter(distributionProps.data)}
+        />
       </AccordionWrapper>
       <AccordionWrapper defaultOpen title="Conceptos de servicio">
         <SearchInput
@@ -42,7 +63,7 @@ const CatalogConceptsPage = () => {
           handleSubmit={() => console.log("handleSubmit service")}
           value={"service value"}
         />
-        <CatalogConceptTable columns={CONCEPT_COL} rows={[]} />
+        <CatalogConceptTable columns={CONCEPT_COL} rows={serviceTableAdapter(serviceProps.data)} />
       </AccordionWrapper>
       {toggleCatalogConceptDialog && <CatalogConceptDialog open={toggleCatalogConceptDialog} />}
     </div>
