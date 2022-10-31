@@ -28,4 +28,5 @@ export interface IServiceConceptItem {
 }
 export interface InitialStateProps extends IBaseSlice {
   data: IServiceConceptItem[];
+  filteredData: IServiceConceptItem[] | null;
 }

@@ -1,1 +1,1 @@
-export { reducer as default } from "./slice";
+export { reducer as default, setFilteredDataService } from "./slice";

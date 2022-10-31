@@ -20,9 +20,9 @@ export const distributionConceptSlice = createSlice({
   name: "distribution-concept",
   initialState,
   reducers: {
-    setFilteredData: (
+    setFilteredDataDistribution: (
       state: InitialStateProps,
-      action: PayloadAction<IDistributionConceptItem[]>
+      action: PayloadAction<IDistributionConceptItem[] | null>
     ) => {
       state.filteredData = action.payload;
     },
@@ -39,7 +39,7 @@ export const distributionConceptSlice = createSlice({
   },
 });
 
-export const { setFilteredData } = distributionConceptSlice.actions;
+export const { setFilteredDataDistribution } = distributionConceptSlice.actions;
 
 export const selectorDistributionConcept = (state: RootState) => state.distributionConcept;
 

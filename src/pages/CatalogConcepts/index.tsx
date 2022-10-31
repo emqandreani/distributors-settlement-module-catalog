@@ -19,6 +19,8 @@ import {
 } from "components/CatalogConceptTable/test-utils";
 import { selectorDistributionConcept } from "features/distribution-concept/slice";
 import { setSearchValues } from "features/search";
+import { IServiceConceptItem } from "interfaces/service-concept";
+import { IDistributionConceptItem } from "interfaces/distribution-concept";
 
 import styles from "./index.module.scss";
 
@@ -64,16 +66,32 @@ const CatalogConceptsPage = () => {
         />
         <CatalogConceptTable
           columns={CONCEPT_COL}
-          rows={distributionTableAdapter(distributionProps.data)}
+          rows={distributionTableAdapter(
+            (distributionProps.filteredData as IDistributionConceptItem[]) ?? distributionProps.data
+          )}
         />
       </AccordionWrapper>
       <AccordionWrapper defaultOpen title="Conceptos de servicio">
         <SearchInput
           handleSearch={() => console.log("service search")}
-          handleSubmit={() => console.log("handleSubmit service")}
+          handleSubmit={(e: React.SyntheticEvent) => {
+            e.preventDefault();
+            dispatch(
+              setSearchValues({
+                flag: "service",
+                searchValue: "viaje",
+                selector: "serviceConcept",
+              })
+            );
+          }}
           value={"service value"}
         />
-        <CatalogConceptTable columns={CONCEPT_COL} rows={serviceTableAdapter(serviceProps.data)} />
+        <CatalogConceptTable
+          columns={CONCEPT_COL}
+          rows={serviceTableAdapter(
+            (serviceProps.filteredData as IServiceConceptItem[]) ?? serviceProps.data
+          )}
+        />
       </AccordionWrapper>
       {toggleCatalogConceptDialog && <CatalogConceptDialog open={toggleCatalogConceptDialog} />}
     </div>
