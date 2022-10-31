@@ -8,6 +8,7 @@ import distributionConcept from "features/distribution-concept";
 import serviceConcept from "features/service-concept";
 import layout from "features/layout";
 import alert from "features/alert";
+import search from "features/search";
 
 export const reducers = combineReducers({
   distributor,
@@ -17,6 +18,7 @@ export const reducers = combineReducers({
   serviceConcept,
   layout,
   alert,
+  search,
 });
 
 export const store = configureStore({

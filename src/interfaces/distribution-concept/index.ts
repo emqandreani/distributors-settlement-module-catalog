@@ -23,4 +23,5 @@ export interface IDistributionConceptItem {
 
 export interface InitialStateProps extends IBaseSlice {
   data: IDistributionConceptItem[];
+  filteredData: IDistributionConceptItem[] | null;
 }

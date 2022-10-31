@@ -1,6 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "app/store";
-import { InitialStateProps } from "interfaces/distribution-concept";
+import { IDistributionConceptItem, InitialStateProps } from "interfaces/distribution-concept";
 import {
   fullfiledSimpleCallbackCase,
   pendingSimpleCallbackCase,
@@ -13,12 +13,20 @@ const initialState: InitialStateProps = {
   data: [],
   isLoading: false,
   error: null,
+  filteredData: null,
 };
 
 export const distributionConceptSlice = createSlice({
   name: "distribution-concept",
   initialState,
-  reducers: {},
+  reducers: {
+    setFilteredData: (
+      state: InitialStateProps,
+      action: PayloadAction<IDistributionConceptItem[]>
+    ) => {
+      state.filteredData = action.payload;
+    },
+  },
   extraReducers(builder) {
     builder.addCase(fetchDistributionConcept.pending, (state) => pendingSimpleCallbackCase(state));
     builder.addCase(fetchDistributionConcept.fulfilled, (state, { payload }) => {
@@ -30,6 +38,8 @@ export const distributionConceptSlice = createSlice({
     );
   },
 });
+
+export const { setFilteredData } = distributionConceptSlice.actions;
 
 export const selectorDistributionConcept = (state: RootState) => state.distributionConcept;
 

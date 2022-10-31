@@ -18,6 +18,7 @@ import {
   serviceTableAdapter,
 } from "components/CatalogConceptTable/test-utils";
 import { selectorDistributionConcept } from "features/distribution-concept/slice";
+import { setSearchValues } from "features/search";
 
 import styles from "./index.module.scss";
 
@@ -49,7 +50,16 @@ const CatalogConceptsPage = () => {
       <AccordionWrapper defaultOpen title="Conceptos de distribución">
         <SearchInput
           handleSearch={() => console.log("Distribution search")}
-          handleSubmit={() => console.log("handleSubmit distribution")}
+          handleSubmit={(e: React.SyntheticEvent) => {
+            e.preventDefault();
+            dispatch(
+              setSearchValues({
+                flag: "distribution",
+                searchValue: "posta",
+                selector: "distributionConcept",
+              })
+            );
+          }}
           value={"distribution value"}
         />
         <CatalogConceptTable

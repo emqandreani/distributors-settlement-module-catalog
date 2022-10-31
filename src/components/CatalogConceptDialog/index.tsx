@@ -8,7 +8,9 @@ import {
   DialogTitle,
   FormLabel,
 } from "@mui/material";
+import { useLocalDispatch } from "app/store";
 import { PrimaryButton } from "components/PrimaryButton";
+import { toggleCatalogDialog } from "features/layout";
 import React from "react";
 
 import styles from "./index.module.scss";
@@ -18,6 +20,8 @@ export interface CatalogConceptDialogProps {
 }
 
 export const CatalogConceptDialog: React.FC<CatalogConceptDialogProps> = ({ open }) => {
+  const dispatch = useLocalDispatch();
+
   return (
     <Dialog className={styles["catalog-concept-dialog-container"]} maxWidth="lg" open={open}>
       <DialogTitle className={styles["dialog-title"]}>+ Crear concepto</DialogTitle>
@@ -40,7 +44,11 @@ export const CatalogConceptDialog: React.FC<CatalogConceptDialogProps> = ({ open
         </FormLabel>
       </DialogContent>
       <DialogActions>
-        <PrimaryButton icon={faArrowLeft} text="Volver" />
+        <PrimaryButton
+          icon={faArrowLeft}
+          text="Volver"
+          onClick={() => dispatch(toggleCatalogDialog(false))}
+        />
         <Button text="Confirmar" variant="contained" />
       </DialogActions>
     </Dialog>

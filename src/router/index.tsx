@@ -1,6 +1,7 @@
 import { useLocalDispatch } from "app/store";
 import ManagePriceBookContainer from "containers/ManagePriceBookContainer";
 import { fetchPriceBooks } from "features/pricebook/asyncActions";
+import useReduxSearch from "hooks/useReduxSearch";
 import PageLayout from "layout/PageLayout";
 import React, { lazy, useEffect } from "react";
 import { Route, Routes as RoutesRouter } from "react-router-dom";
@@ -15,6 +16,7 @@ const AssignPriceBookPage = lazy(() => import("../pages/AssignPriceBook"));
 const CatalogConceptsPage = lazy(() => import("pages/CatalogConcepts"));
 
 const Router = () => {
+  useReduxSearch();
   const dispatch = useLocalDispatch();
 
   useEffect(() => {
