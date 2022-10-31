@@ -18,7 +18,6 @@ import useFilteredPriceBook from "hooks/useFilteredPriceBook";
 import { priceBookConceptsTableAdapter } from "adapters/priceBookConceptsTableAdapter";
 import { selectorPricebook } from "features/pricebook/slice";
 import { selectorLayout } from "features/layout/slice";
-import { IPriceBookItem } from "interfaces/pricebook-item";
 import { IPriceBook } from "interfaces/pricebook";
 import { useLocalSelector } from "app/store";
 import { SuspenseLoader } from "components/SuspenseLoader";
