@@ -36,39 +36,6 @@ const useReduxSearch = () => {
           )
         )
       );
-    // switch (selector) {
-    //   case "distributionConcept":
-    //     dispatch(
-    //       setFilteredDataDistribution(
-    //         distributionConceptProps.data.filter((el) =>
-    //           el.description
-    //             .toLocaleLowerCase()
-    //             .trim()
-    //             .includes(searchValue!.toLocaleLowerCase().trim() as string)
-    //         )
-    //       )
-    //     );
-
-    //     break;
-    //   case "serviceConcept":
-    //     dispatch(
-    //       setFilteredDataService(
-    //         serviceConceptProps.data.filter((el) =>
-    //           el.description
-    //             .toLocaleLowerCase()
-    //             .trim()
-    //             .includes(searchValue!.toLocaleLowerCase().trim())
-    //         )
-    //       )
-    //     );
-    //     break;
-    //   default:
-    //     // dispatch(setFilteredDataDistribution(null));
-    //     // dispatch(setFilteredDataService(null));
-    //     break;
-    // }
-
-    // return () => {};
   }, [dispatch, distributionConceptProps.data, searchValue, selector, serviceConceptProps.data]);
 };
 

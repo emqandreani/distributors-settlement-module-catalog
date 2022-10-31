@@ -23,7 +23,12 @@ export const CatalogConceptDialog: React.FC<CatalogConceptDialogProps> = ({ open
   const dispatch = useLocalDispatch();
 
   return (
-    <Dialog className={styles["catalog-concept-dialog-container"]} maxWidth="lg" open={open}>
+    <Dialog
+      className={styles["catalog-concept-dialog-container"]}
+      maxWidth="lg"
+      open={open}
+      sx={{ ".MuiPaper-root": { width: "500px" } }}
+    >
       <DialogTitle className={styles["dialog-title"]}>+ Crear concepto</DialogTitle>
       <DialogContent className={styles["checkbox-wrapper"]}>
         <FormLabel>
@@ -35,12 +40,26 @@ export const CatalogConceptDialog: React.FC<CatalogConceptDialogProps> = ({ open
           Conceptos de servicio
         </FormLabel>
       </DialogContent>
-      <DialogContent className={styles["textfield-wrapper"]}>
+      <DialogContent
+        className={styles["textfield-wrapper"]}
+        sx={{
+          ".MuiFormControl-root": {
+            width: "100%",
+          },
+        }}
+      >
         <FormLabel>
           <Input placeholder="Nombre" value="" />
         </FormLabel>
-        <FormLabel sx={{ height: "200px" }}>
-          <Input placeholder="Descripcion" size="medium" value="" />
+        <FormLabel
+          sx={{
+            height: "200px",
+            ".MuiFormControl-root": {
+              width: "100%",
+            },
+          }}
+        >
+          <Input placeholder="Descripcion" value="" />
         </FormLabel>
       </DialogContent>
       <DialogActions>

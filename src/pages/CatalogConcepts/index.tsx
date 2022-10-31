@@ -1,7 +1,7 @@
 import { CONCEPT_COL } from "constants/tableColumns";
 
 import { CatalogConceptTable } from "components/CatalogConceptTable";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { SecondaryButton } from "components/SecondaryButton";
 import { faArrowLeft, faPlus } from "@fortawesome/pro-regular-svg-icons";
 import { PrimaryButton } from "components/PrimaryButton";
@@ -28,6 +28,9 @@ const CatalogConceptsPage = () => {
   const { toggleCatalogConceptDialog } = useLocalSelector(selectorLayout);
   const dispatch = useLocalDispatch();
 
+  const [distriValue, setDistriValue] = useState<string>("");
+  const [serviValue, setServiValue] = useState<string>("");
+
   const { ...serviceProps } = useLocalSelector(selectorServiceConcept);
   const { ...distributionProps } = useLocalSelector(selectorDistributionConcept);
 
@@ -51,18 +54,21 @@ const CatalogConceptsPage = () => {
       <hr />
       <AccordionWrapper defaultOpen title="Conceptos de distribución">
         <SearchInput
-          handleSearch={() => console.log("Distribution search")}
+          handleSearch={(e: React.ChangeEvent<HTMLInputElement>) => {
+            e.preventDefault();
+            setDistriValue(e.target.value);
+          }}
           handleSubmit={(e: React.SyntheticEvent) => {
             e.preventDefault();
             dispatch(
               setSearchValues({
                 flag: "distribution",
-                searchValue: "posta",
+                searchValue: distriValue,
                 selector: "distributionConcept",
               })
             );
           }}
-          value={"distribution value"}
+          value={distriValue}
         />
         <CatalogConceptTable
           columns={CONCEPT_COL}
@@ -73,18 +79,21 @@ const CatalogConceptsPage = () => {
       </AccordionWrapper>
       <AccordionWrapper defaultOpen title="Conceptos de servicio">
         <SearchInput
-          handleSearch={() => console.log("service search")}
+          handleSearch={(e: React.ChangeEvent<HTMLInputElement>) => {
+            e.preventDefault();
+            setServiValue(e.target.value);
+          }}
           handleSubmit={(e: React.SyntheticEvent) => {
             e.preventDefault();
             dispatch(
               setSearchValues({
                 flag: "service",
-                searchValue: "viaje",
+                searchValue: serviValue,
                 selector: "serviceConcept",
               })
             );
           }}
-          value={"service value"}
+          value={serviValue}
         />
         <CatalogConceptTable
           columns={CONCEPT_COL}
