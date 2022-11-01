@@ -4,7 +4,7 @@ import { FormLabel, TextField } from "@mui/material";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { PrimaryButton } from "components/PrimaryButton";
 import { SecondaryButton } from "components/SecondaryButton";
-import React, { ReactNode } from "react";
+import React, { ReactNode, useMemo } from "react";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { useNavigate } from "react-router";
 import { toggleConceptDialog } from "features/layout";
@@ -29,10 +29,10 @@ interface PriceBookHeaderBaseProps {
   saveBtn?: boolean;
 }
 
-const location = window.location.href;
-
 const PriceBookHeaderBase: React.FC<PriceBookHeaderBaseProps> = ({ children, backTo, saveBtn }) => {
   const dispatch = useLocalDispatch();
+
+  const location = useMemo(() => window.location.href, []);
 
   const navigate = useNavigate();
 

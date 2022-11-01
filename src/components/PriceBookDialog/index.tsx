@@ -23,6 +23,8 @@ export interface PriceBookDialogProps {
 
 export const PriceBookDialog: React.FC<PriceBookDialogProps> = ({ open, requestType }) => {
   const dispatch = useLocalDispatch();
+
+  console.log(requestType);
   const { newPriceBook, editedPriceBook } = useLocalSelector(selectorPricebook);
 
   return (

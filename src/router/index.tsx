@@ -1,10 +1,16 @@
-import { useLocalDispatch } from "app/store";
+import { STATUS } from "constants/status";
+
+import { useLocalDispatch, useLocalSelector } from "app/store";
 import ManagePriceBookContainer from "containers/ManagePriceBookContainer";
+import { selectorPricebookItem } from "features/pricebook-item/slice";
 import { fetchPriceBooks } from "features/pricebook/asyncActions";
+import { selectorPricebook } from "features/pricebook/slice";
 import useReduxSearch from "hooks/useReduxSearch";
 import PageLayout from "layout/PageLayout";
 import React, { lazy, useEffect } from "react";
 import { Route, Routes as RoutesRouter } from "react-router-dom";
+import { SuspenseLoader } from "components/SuspenseLoader";
+import { RejectedFallback } from "components/RejectedFallback";
 
 const HomePage = lazy(() => import("../pages/Home"));
 const PricebooksPage = lazy(() => import("../pages/Pricebooks"));
@@ -19,9 +25,18 @@ const Router = () => {
   useReduxSearch();
   const dispatch = useLocalDispatch();
 
+  const { postPriceBookRequest, putPriceBookRequest } = useLocalSelector(selectorPricebook);
+  const { response } = useLocalSelector(selectorPricebookItem);
+
   useEffect(() => {
     dispatch(fetchPriceBooks());
-  }, [dispatch]);
+    if (postPriceBookRequest?.status || putPriceBookRequest?.status === STATUS.SUCCESSFUL) {
+      dispatch(fetchPriceBooks());
+    }
+    if (response === STATUS.SUCCESSFUL) {
+      dispatch(fetchPriceBooks());
+    }
+  }, [dispatch, postPriceBookRequest, putPriceBookRequest?.status, response]);
 
   return (
     <RoutesRouter>

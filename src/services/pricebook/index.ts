@@ -14,10 +14,7 @@ class PricebookService extends ServiceBase {
 
   getPricebook = (id?: string) => this.client.get<IPriceBook>(PRICEBOOKS_ENDPOINT, id as any);
   postPricebook = (data: IPostPriceBookDto) =>
-    this.client.post<ResponseType, AxiosResponse<IResquest>>(
-      `${PRICEBOOKS_ENDPOINT}/${PRICEBOOK_PUT_ENDPOINT}`,
-      data
-    );
+    this.client.post<ResponseType, AxiosResponse<IResquest>>(`${PRICEBOOKS_ENDPOINT}`, data);
   putPricebook = (data: IUpdatePriceBookDto) =>
     this.client.put<ResponseType, AxiosResponse<IResquest>>(
       `${PRICEBOOKS_ENDPOINT}/${PRICEBOOK_PUT_ENDPOINT}`,

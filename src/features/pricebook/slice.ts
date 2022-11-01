@@ -1,4 +1,5 @@
 import { PRICEBOOKS_STATES } from "constants/pricebookStates";
+import { STATUS } from "constants/status";
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
@@ -17,6 +18,7 @@ import {
 } from "test-utils/reduxCallbacks";
 import mapPriceBooks from "test-utils/mapPriceBooks";
 import { filterPbByState } from "test-utils/filterPbByState";
+import { ICleanUpRequest } from "interfaces/requests";
 
 import { createPricebook, fetchPriceBooks, modifyPricebook } from "./asyncActions";
 
@@ -184,21 +186,21 @@ export const pricebookSlice = createSlice({
     ) => {
       state.editedPriceBook = action.payload;
     },
-    // cleanPriceBookRequest: (state: InitialStateProps, action: PayloadAction<ICleanUpRequest>) => {
-    //   switch (action.payload.type) {
-    //     case "post":
-    //       state.postPriceBookRequest = action.payload.payload;
-    //       break;
-    //     case "put":
-    //       state.putPriceBookRequest = action.payload.payload;
-    //       break;
-    //     case "get":
-    //       state.getPriceBooksRequest = action.payload.payload;
-    //       break;
-    //     default:
-    //       break;
-    //   }
-    // },
+    cleanPriceBookRequest: (state: InitialStateProps, action: PayloadAction<ICleanUpRequest>) => {
+      switch (action.payload.type) {
+        case "post":
+          state.postPriceBookRequest = action.payload.payload;
+          break;
+        case "put":
+          state.putPriceBookRequest = action.payload.payload;
+          break;
+        case "get":
+          state.getPriceBooksRequest = action.payload.payload;
+          break;
+        default:
+          break;
+      }
+    },
   },
   extraReducers(builder) {
     builder.addCase(fetchPriceBooks.pending, (state, action) => {
@@ -233,7 +235,9 @@ export const pricebookSlice = createSlice({
       state.postPriceBookRequest!.status = action.meta.requestStatus;
     });
     builder.addCase(createPricebook.fulfilled, (state, { payload }) => {
-      state.postPriceBookRequest = { ...payload };
+      state.postPriceBookRequest!.status = STATUS.SUCCESSFUL;
+      state.postPriceBookRequest!.id = payload.id;
+      state.postPriceBookRequest!.name = payload.name;
     });
     builder.addCase(createPricebook.rejected, (state, action) => {
       state.postPriceBookRequest!.status = action.meta.requestStatus;
@@ -243,7 +247,9 @@ export const pricebookSlice = createSlice({
       state.putPriceBookRequest!.status = action.meta.requestStatus;
     });
     builder.addCase(modifyPricebook.fulfilled, (state, { payload }) => {
-      state.putPriceBookRequest = { ...payload };
+      state.postPriceBookRequest!.status = STATUS.SUCCESSFUL;
+      state.postPriceBookRequest!.id = payload.id;
+      state.postPriceBookRequest!.name = payload.name;
     });
     builder.addCase(modifyPricebook.rejected, (state, action) => {
       state.putPriceBookRequest!.status = action.meta.requestStatus;
@@ -272,6 +278,7 @@ export const {
   selectBranchPriceBookForAddition,
   selectDistributorPriceBookForAddition,
   selectVehiclePriceBookForAddition,
+  cleanPriceBookRequest,
 } = pricebookSlice.actions;
 
 export const reducer = pricebookSlice.reducer;

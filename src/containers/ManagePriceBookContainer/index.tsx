@@ -13,7 +13,7 @@ import useConceptTables from "hooks/useConceptTables";
 import { IPriceBook } from "interfaces/pricebook";
 import { useLocalDispatch, useLocalSelector } from "app/store";
 import { selectorLayout, togglePbSnack } from "features/layout/slice";
-import { selectorPricebook } from "features/pricebook/slice";
+import { cleanPriceBookRequest, selectorPricebook } from "features/pricebook/slice";
 import { IDistributionConceptItem } from "interfaces/distribution-concept";
 import { IServiceConceptItem } from "interfaces/service-concept";
 
@@ -95,7 +95,7 @@ const ManagePriceBookContainer = () => {
           type="success"
           onClose={() => {
             dispatch(togglePbSnack(false));
-            // dispatch(cleanPriceBookRequest({ payload: null, type: "post" }));
+            dispatch(cleanPriceBookRequest({ payload: null, type: "post" }));
             navigate("/catalogo/librodeprecios");
           }}
         />
@@ -107,7 +107,7 @@ const ManagePriceBookContainer = () => {
           type="success"
           onClose={() => {
             dispatch(togglePbSnack(false));
-            // dispatch(cleanPriceBookRequest({ payload: null, type: "put" }));
+            dispatch(cleanPriceBookRequest({ payload: null, type: "put" }));
             navigate("/catalogo/librodeprecios");
           }}
         />
