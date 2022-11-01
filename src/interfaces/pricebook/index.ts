@@ -79,6 +79,7 @@ export interface IConceptFlag {
 
 export interface InitialStateProps extends IBaseSlice {
   data: IPriceBook | {};
+  filteredDataPricebook: IPriceBook[] | null;
   addedConcepts: IPriceBookConceptsTable[] | [];
   subPriceBooks: IPriceBook[] | [];
   mappedPriceBooks: IPriceBook[];
@@ -87,7 +88,6 @@ export interface InitialStateProps extends IBaseSlice {
   consolidatedPriceBooks: IPriceBook[] | [];
   unConsolidatedPriceBooks: IPriceBook[] | [];
   expiredPriceBooks: IPriceBook[] | [];
-  filteredPriceBooks: IPriceBook[] | null;
   basePriceBookForAddition: IPriceBook | null;
   selectedRegionalPriceBookForAddition: IPriceBook | null;
   selectedBranchPriceBookForAddition: IPriceBook | null;

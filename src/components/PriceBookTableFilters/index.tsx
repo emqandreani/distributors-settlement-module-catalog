@@ -3,12 +3,12 @@ import { Checkbox } from "@mui/material";
 import { useLocalDispatch, useLocalSelector } from "app/store";
 import { PrimaryButton } from "components/PrimaryButton";
 import { SearchInput } from "components/SearchInput";
-import { selectorPricebook } from "features/pricebook/slice";
+import { selectorPricebook, setFilteredDataPricebook } from "features/pricebook/slice";
 import { setSearchValues } from "features/search";
 import usePriceBookTableFilters from "hooks/usePriceBookTableFilters";
 import { IApplicationLevelTypeName } from "interfaces/enums";
 import { IPriceBook } from "interfaces/pricebook";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import styles from "./index.module.scss";
 export interface PriceBookTableFiltersProps {}
@@ -21,6 +21,13 @@ export const PriceBookTableFilters: React.FC<PriceBookTableFiltersProps> = () =>
   const {
     applicationLevel: { applicationLevelTypeName },
   } = data as IPriceBook;
+
+  useEffect(() => {
+    if (!value.length) {
+      //Clearing filtered data, need to extend to others searches
+      dispatch(setFilteredDataPricebook(null));
+    }
+  }, [dispatch, value.length]);
 
   return (
     <div className={styles["pricebook-filter-container"]}>

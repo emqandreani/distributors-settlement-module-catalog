@@ -34,7 +34,7 @@ const location = window.location.href;
 const PriceBookHeaderBase: React.FC<PriceBookHeaderBaseProps> = ({ children, backTo, saveBtn }) => {
   const dispatch = useLocalDispatch();
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   return (
     <div className={styles["header-container"]}>
@@ -46,7 +46,7 @@ const PriceBookHeaderBase: React.FC<PriceBookHeaderBaseProps> = ({ children, bac
           <PrimaryButton
             icon={faPlus}
             text="Asignar libro"
-            // onClick={() => navigate("/catalogo/assign")}
+            onClick={() => navigate("/catalogo/assign")}
           />
           {!location.includes("create") && (
             <>

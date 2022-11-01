@@ -24,6 +24,7 @@ const initialState: InitialStateProps = {
   data: {},
   error: null,
   isLoading: false,
+  filteredDataPricebook: null,
   subPriceBooks: [],
   mappedPriceBooks: [],
   activePriceBooks: [],
@@ -31,7 +32,6 @@ const initialState: InitialStateProps = {
   consolidatedPriceBooks: [],
   unConsolidatedPriceBooks: [],
   expiredPriceBooks: [],
-  filteredPriceBooks: null,
   basePriceBookForAddition: null,
   selectedRegionalPriceBookForAddition: null,
   selectedBranchPriceBookForAddition: null,
@@ -103,23 +103,11 @@ export const pricebookSlice = createSlice({
     searchConceptFlag: (state: InitialStateProps, action: PayloadAction<IConceptFlag | null>) => {
       state.filteredConceptFlag = action.payload;
     },
-    filterPriceBookByString: (state: InitialStateProps, action: PayloadAction<string | null>) => {
-      if (action.payload) {
-        state.filteredPriceBooks = state.subPriceBooks.filter((p: IPriceBook) => {
-          return (
-            p.name
-              .trim()
-              .toLocaleLowerCase()
-              .includes(action.payload as string) ||
-            p.createdBy
-              .trim()
-              .toLocaleLowerCase()
-              .includes(action.payload as string)
-          );
-        });
-      } else {
-        state.filteredPriceBooks = action.payload as null;
-      }
+    setFilteredDataPricebook: (
+      state: InitialStateProps,
+      action: PayloadAction<IPriceBook[] | null>
+    ) => {
+      state.filteredDataPricebook = action.payload;
     },
     selectRegionalPriceBookForAddition: (
       state: InitialStateProps,
@@ -268,7 +256,7 @@ export const selectorPricebook = (state: RootState) => state.pricebook;
 export const {
   selectPriceBook,
   selectNewSimulatedPriceBook,
-  filterPriceBookByString,
+  setFilteredDataPricebook,
   selectStateFlag,
   saveEditedPriceBook,
   addNewPriceBook,

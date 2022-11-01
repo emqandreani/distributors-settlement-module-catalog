@@ -31,9 +31,8 @@ const useFilteredPriceBook = () => {
           break;
       }
     }
-    if (priceBooksDynamicsProps.filteredPriceBooks) {
-      setFilteredPriceBooks(priceBooksDynamicsProps.filteredPriceBooks);
-      dispatch(selectPriceBook(null));
+    if (priceBooksDynamicsProps.filteredDataPricebook) {
+      setFilteredPriceBooks(priceBooksDynamicsProps.filteredDataPricebook);
     }
 
     return () => {
@@ -45,7 +44,7 @@ const useFilteredPriceBook = () => {
     priceBooksDynamicsProps.consolidatedPriceBooks,
     priceBooksDynamicsProps.draftPriceBooks,
     priceBooksDynamicsProps.expiredPriceBooks,
-    priceBooksDynamicsProps.filteredPriceBooks,
+    priceBooksDynamicsProps.filteredDataPricebook,
     priceBooksDynamicsProps.stateFilterFlag,
     priceBooksDynamicsProps.unConsolidatedPriceBooks,
   ]);

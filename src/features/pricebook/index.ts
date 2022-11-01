@@ -1,6 +1,6 @@
 export {
   reducer as default,
-  filterPriceBookByString,
+  setFilteredDataPricebook,
   selectNewSimulatedPriceBook,
   selectConcept,
   selectPriceBook,
