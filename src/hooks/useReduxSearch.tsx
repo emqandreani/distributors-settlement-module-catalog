@@ -42,21 +42,26 @@ const useReduxSearch = () => {
         );
         break;
       case "pricebook":
-        dispatch(
-          setFilteredDataPricebook(
-            pricebookProps.subPriceBooks.filter(
-              (p) =>
-                p.name
-                  .trim()
-                  .toLocaleLowerCase()
-                  .includes(searchValue as string) ||
-                p.createdBy
-                  .trim()
-                  .toLocaleLowerCase()
-                  .includes(searchValue as string)
+        //Flag check because we use pricebook selector in service and distribution concepts tables
+        if (!flag?.length) {
+          dispatch(
+            setFilteredDataPricebook(
+              pricebookProps.subPriceBooks.filter(
+                (p) =>
+                  p.name
+                    .trim()
+                    .toLocaleLowerCase()
+                    .includes(searchValue as string) ||
+                  p.createdBy
+                    .trim()
+                    .toLocaleLowerCase()
+                    .includes(searchValue as string)
+              )
             )
-          )
-        );
+          );
+        } else {
+          return;
+        }
         break;
       default:
         break;
@@ -64,6 +69,7 @@ const useReduxSearch = () => {
   }, [
     dispatch,
     distributionConceptProps.data,
+    flag?.length,
     pricebookProps.subPriceBooks,
     searchValue,
     selector,

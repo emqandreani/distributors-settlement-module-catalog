@@ -1,3 +1,5 @@
+import { CONCEPTS } from "constants/concepts";
+
 import { Checkbox, FormLabel } from "@mui/material";
 import { useLocalSelector } from "app/store";
 import { ApplicationLevelFilters } from "components/ApplicationLevelFilters";
@@ -26,7 +28,7 @@ export const DialogConceptTableFilters: React.FC<DialogConceptTableFiltersProps>
       <div className={styles["__inline-flex"]}>
         <FormLabel>
           <Checkbox
-            checked={selectValue === "distribution" ?? false}
+            checked={selectValue === CONCEPTS.DISTRIBUTION ?? false}
             sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
             value="distribution"
             onChange={handleSelectValue}
@@ -35,7 +37,11 @@ export const DialogConceptTableFilters: React.FC<DialogConceptTableFiltersProps>
         </FormLabel>
         <FormLabel>
           <Checkbox
-            checked={selectedConcept === "service" ? true : selectValue === "service" ?? false}
+            checked={
+              selectedConcept === CONCEPTS.SERVICE
+                ? true
+                : selectValue === CONCEPTS.SERVICE ?? false
+            }
             sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
             value="service"
             onChange={handleSelectValue}

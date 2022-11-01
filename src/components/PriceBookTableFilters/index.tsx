@@ -64,7 +64,7 @@ export const PriceBookTableFilters: React.FC<PriceBookTableFiltersProps> = () =>
             dispatch(
               setSearchValues({
                 selector: "pricebook",
-                flag: "pricebook",
+                flag: "",
                 searchValue: value,
               })
             );

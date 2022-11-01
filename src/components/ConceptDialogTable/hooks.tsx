@@ -1,3 +1,5 @@
+import { CONCEPTS } from "constants/concepts";
+
 import { GridSelectionModel } from "@mui/x-data-grid";
 import { useLocalDispatch, useLocalSelector } from "app/store";
 import { addConceptItems, selectorPricebook } from "features/pricebook/slice";
@@ -15,12 +17,12 @@ const useConceptDialogTable = (rows: IPriceBookConceptsTable[]) => {
   const handleSelection = (model: GridSelectionModel) => {
     const selectedRows = rows.filter((row) => model.indexOf(row.id) >= 0);
 
-    selectedConcept === "service" &&
+    selectedConcept === CONCEPTS.SERVICE &&
       setAddedServices(
         selectedRows.filter(({ priceBookItemTypeName }) => priceBookItemTypeName == "Service")
       );
 
-    selectedConcept === "distribution" &&
+    selectedConcept === CONCEPTS.DISTRIBUTION &&
       setAddedDistribution(
         selectedRows.filter(({ priceBookItemTypeName }) => priceBookItemTypeName == "Distribution")
       );

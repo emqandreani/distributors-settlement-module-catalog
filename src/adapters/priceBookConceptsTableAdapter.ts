@@ -1,3 +1,5 @@
+import { CONCEPTS } from "constants/concepts";
+
 import { IDistributionConceptItem } from "interfaces/distribution-concept";
 import { IPriceBook } from "interfaces/pricebook";
 import { IServiceConceptItem } from "interfaces/service-concept";
@@ -7,7 +9,7 @@ export const priceBookConceptsTableAdapter = (
   conceptItems: IDistributionConceptItem[] | IServiceConceptItem[],
   type: "service" | "distribution"
 ) => {
-  if (type === "distribution") {
+  if (type === CONCEPTS.DISTRIBUTION) {
     return conceptItems.map((element) => {
       return {
         priceBookId: priceBook.id,
@@ -28,7 +30,7 @@ export const priceBookConceptsTableAdapter = (
         priceBookItemTypeName: element.priceBookItemTypeDescription,
       };
     });
-  } else if (type === "service") {
+  } else if (type === CONCEPTS.SERVICE) {
     return conceptItems.map((element) => {
       return {
         priceBookId: priceBook.id,

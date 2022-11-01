@@ -3,10 +3,10 @@ import { CONCEPTS } from "constants/concepts";
 import { useLocalSelector } from "app/store";
 import { selectorPricebook } from "features/pricebook/slice";
 import { IPriceBook } from "interfaces/pricebook";
-import { IPriceBookItem } from "interfaces/pricebook-item";
 import { useEffect, useState } from "react";
 import { IServiceConceptItem } from "interfaces/service-concept";
 import { IDistributionConceptItem } from "interfaces/distribution-concept";
+import { selectorSearch } from "features/search/slice";
 
 const useConceptTables = (priceBook: IPriceBook) => {
   const [filteredServices, setFilteredServices] = useState<IServiceConceptItem[] | null>(null);
@@ -14,26 +14,26 @@ const useConceptTables = (priceBook: IPriceBook) => {
     IDistributionConceptItem[] | null
   >(null);
 
-  const { filteredConceptFlag } = useLocalSelector(selectorPricebook);
   const { serviceConceptItems, distributionConceptItems } = priceBook as IPriceBook;
+  const { flag, searchValue, selector } = useLocalSelector(selectorSearch);
 
   useEffect(() => {
-    if (filteredConceptFlag?.type === CONCEPTS.SERVICE && serviceConceptItems) {
+    if (flag === CONCEPTS.SERVICE && selector === "pricebook") {
       const filtered = serviceConceptItems.filter((c) =>
         c.description
           .trim()
           .toLocaleLowerCase()
-          .includes(filteredConceptFlag?.flag as string)
+          .includes(searchValue as string)
       );
 
       setFilteredServices(filtered as IServiceConceptItem[]);
     }
-    if (filteredConceptFlag?.type === CONCEPTS.DISTRIBUTION && distributionConceptItems) {
+    if (flag === CONCEPTS.DISTRIBUTION && selector === "pricebook") {
       const filtered = distributionConceptItems.filter((c) =>
         c.description
           .trim()
           .toLocaleLowerCase()
-          .includes(filteredConceptFlag?.flag as string)
+          .includes(searchValue as string)
       );
 
       setFilteredDistribution(filtered as IDistributionConceptItem[]);
@@ -43,12 +43,7 @@ const useConceptTables = (priceBook: IPriceBook) => {
       setFilteredDistribution(null);
       setFilteredServices(null);
     };
-  }, [
-    filteredConceptFlag?.type,
-    filteredConceptFlag?.flag,
-    serviceConceptItems,
-    distributionConceptItems,
-  ]);
+  }, [distributionConceptItems, flag, searchValue, selector, serviceConceptItems]);
 
   return { filteredDistribution, filteredServices };
 };

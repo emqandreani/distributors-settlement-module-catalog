@@ -1,4 +1,5 @@
 import { priceBookConceptColumns } from "constants/priceBookConceptColumns";
+import { CONCEPTS } from "constants/concepts";
 
 import { priceBookConceptsTableAdapter } from "adapters/priceBookConceptsTableAdapter";
 import { ConceptDialogTable } from "components/ConceptDialogTable";
@@ -40,7 +41,7 @@ export const ConceptContainer: React.FC<ConceptContainerProps> = () => {
                 ? []
                 : priceBookConceptsTableAdapter(
                     basePriceBookForAddition as IPriceBook,
-                    selectedConcept === "distribution"
+                    selectedConcept === CONCEPTS.DISTRIBUTION
                       ? (currentPriceBook.distributionConceptItems as IDistributionConceptItem[])
                       : (currentPriceBook.serviceConceptItems as IServiceConceptItem[]),
                     selectedConcept
