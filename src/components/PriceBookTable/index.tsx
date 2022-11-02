@@ -83,6 +83,7 @@ export const PriceBookTable: React.FC<PricebookTableProps> = ({ columns, rows })
         <GridActionsCellItem key={params.id} showInMenu label="Duplicar" />,
         <GridActionsCellItem
           key={params.id}
+          disabled
           showInMenu
           label="Editar"
           onClick={() => navigate(`/catalogo/manage/edit/${params.id}`)}
