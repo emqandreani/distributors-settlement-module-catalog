@@ -80,7 +80,7 @@ export const PriceBookTable: React.FC<PricebookTableProps> = ({ columns, rows })
           label="Ver"
           onClick={() => navigate(`./${params.id}`)}
         />,
-        <GridActionsCellItem key={params.id} showInMenu label="Duplicar" />,
+        <GridActionsCellItem key={params.id} disabled showInMenu label="Duplicar" />,
         <GridActionsCellItem
           key={params.id}
           disabled
@@ -88,8 +88,8 @@ export const PriceBookTable: React.FC<PricebookTableProps> = ({ columns, rows })
           label="Editar"
           onClick={() => navigate(`/catalogo/manage/edit/${params.id}`)}
         />,
-        <GridActionsCellItem key={params.id} showInMenu label="Solicitar Aprobación" />,
-        <GridActionsCellItem key={params.id} showInMenu label="Simular" />,
+        <GridActionsCellItem key={params.id} disabled showInMenu label="Solicitar Aprobación" />,
+        <GridActionsCellItem key={params.id} disabled showInMenu label="Simular" />,
       ],
     };
   }, [navigate]);

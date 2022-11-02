@@ -14,7 +14,12 @@ export interface PrimaryButtonProps {
 
 export const PrimaryButton: React.FC<PrimaryButtonProps> = ({ onClick, icon, text, path }) => {
   return (
-    <button className={styles["primary-button-wrapper"]} type="button" onClick={onClick}>
+    <button
+      className={styles["primary-button-wrapper"]}
+      disabled={text === "Simular"}
+      type="button"
+      onClick={onClick}
+    >
       <Link className={styles["__link"]} to={path ?? ""}>
         <span className={styles["__icon"]}>
           <FontAwesomeIcon icon={icon} />
